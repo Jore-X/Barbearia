@@ -1,0 +1,26 @@
+@import url(./src/styles/header.css);
+@import url(./src/styles/hero.css);
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  /* border: 2px solid #e8c97b; */
+}
+
+:root {
+  --gold: #c9a84c;
+  --gold-light: #e8c97b;
+  --gold-dark: #8b6914;
+  --black: #0a0a0a;
+  --dark: #111111;
+  --dark2: #1a1a1a;
+  --dark3: #222222;
+  --gray: #888888;
+  --light: #f5f0e8;
+  --cream: #faf7f2;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
