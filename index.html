@@ -24,21 +24,48 @@
   </head>
   <body>
     <header>
-      <div id="header_logo">NAVALHA <span>&</span> CO.</div>
-      <nav id="navbar">
-        <ul id="navList">
-          <a href="#services">Serviços</a>
-          <a href="#barbers">Barbeiros</a>
-          <a href="#gallery">Galeria</a>
-          <a href="#customers">Clientes</a>
-          <div>
-            <a id="CTA_btn">AGENDAR</a>
-          </div>
+      <div id="header_content">
+        <div id="header_logo">NAVALHA <span>&</span> CO.</div>
+        <nav id="navbar">
+          <ul id="navList">
+            <li class="navItem">
+              <a href="#services">Serviços</a>
+            </li>
+            <li class="navItem">
+              <a href="#barbers">Barbeiros</a>
+            </li>
+            <li class="navItem">
+              <a href="#gallery">Galeria</a>
+            </li>
+            <li class="navItem">
+              <a href="#customers">Clientes</a>
+            </li>
+            <div>
+              <a id="CTA_btn">AGENDAR</a>
+            </div>
+          </ul>
+          <button id="mobile_header_btn">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </nav>
+      </div>
+      <div id="mobile_menu">
+        <ul id="mobile_navList">
+          <li class="navItem">
+            <a href="#services">Serviços</a>
+          </li>
+          <li class="navItem">
+            <a href="#barbers">Barbeiros</a>
+          </li>
+          <li class="navItem">
+            <a href="#gallery">Galeria</a>
+          </li>
+          <li class="navItem">
+            <a href="#customers">Clientes</a>
+          </li>
+          <a id="CTA_btn">AGENDAR</a>
         </ul>
-        <button id="mobile_header_btn">
-          <i class="fa-solid fa-bars"></i>
-        </button>
-      </nav>
+      </div>
     </header>
     <main>
       <section id="hero" class="sections">
@@ -80,5 +107,7 @@
         </div>
       </section>
     </main>
+
+    <script src="./script.js"></script>
   </body>
 </html>
