@@ -1,3 +1,4 @@
+
 .hero-bg {
   position: absolute;
   inset: 0;
@@ -23,7 +24,6 @@
   background-size: 80px 80px;
   mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
 }
-
 #hero {
   color: var(--light);
   position: relative;
