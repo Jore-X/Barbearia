@@ -36,6 +36,54 @@ section {
   margin: 0 auto;
 }
 
+.subtitle-tag {
+  display: inline-flex;
+  color: var(--gold);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  align-items: center;
+  font-weight: 500;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.subtitle-tag::before {
+  content: " ";
+  display: block;
+  width: 30px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.action-btn {
+  /* width: clamp(240px, 60vw, 45%); */
+  /* min-width: 240px; */
+  /* max-width: 45%; */
+  position: relative;
+  background: var(--gold);
+  border: none;
+  color: var(--dark3);
+}
+.action-btn span {
+  position: relative;
+  inset: 1;
+}
+.action-btn::before {
+  content: "";
+  inset: 0;
+  width: 0%;
+  left: 0;
+  top: 0;
+  position: absolute;
+  background: var(--gold-light);
+  height: 100%;
+  transition: width 0.4s ease-in-out;
+}
+.action-btn:hover::before {
+  width: 100%;
+}
+
 .gold-divider {
   display: flex;
   align-items: center;
