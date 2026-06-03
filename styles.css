@@ -36,9 +36,36 @@ section {
   margin: 0 auto;
 }
 
+.gold-divider {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  padding: 2px 60px;
+  max-width: 1300px;
+  gap: 20px;
+}
+.gold-divider {
+  color: var(--gold);
+  font-size: 0.8rem;
+}
+.gold-divider::before,
+.gold-divider::after {
+  content: "";
+  background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.3));
+  flex: 1;
+  height: 1px;
+}
+.gold-divider::after {
+  background: linear-gradient(90deg, rgba(201, 168, 76, 0.3), transparent);
+}
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
+  section {
+    padding: 80px 30px;
+  }
+}
+/* @media screen and (max-width: 768px) {
   section {
     padding: clamp(30px, 10vw, 100px);
   }
-}
+} */
