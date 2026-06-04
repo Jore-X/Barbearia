@@ -1,5 +1,6 @@
 @import url(./src/styles/header.css);
 @import url(./src/styles/hero.css);
+@import url(./src/styles/services.css);
 
 * {
   box-sizing: border-box;
@@ -30,7 +31,7 @@ body {
   cursor: default;
 }
 
-section {
+section, #services .inner {
   padding: 100px 60px;
   max-width: 1300px;
   margin: 0 auto;
@@ -57,13 +58,13 @@ section {
 }
 
 .action-btn {
-  /* width: clamp(240px, 60vw, 45%); */
-  /* min-width: 240px; */
-  /* max-width: 45%; */
   position: relative;
   background: var(--gold);
   border: none;
-  color: var(--dark3);
+  color: var(--black);
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
 }
 .action-btn span {
   position: relative;
@@ -88,7 +89,7 @@ section {
   display: flex;
   align-items: center;
   margin: 0 auto;
-  padding: 2px 60px;
+  padding: 6px 60px;
   max-width: 1300px;
   gap: 20px;
 }
