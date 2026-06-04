@@ -123,6 +123,30 @@ section,
   margin: 0 auto;
 }
 
+.section-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  margin: 0 0 20px;
+}
+.section-title .italic {
+  font-style: italic;
+  font-weight: 400;
+}
+.section-title .gold {
+  color: var(--gold);
+}
+
+.section-sub {
+  max-width: 600px;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  color: rgba(245, 240, 232, 0.5);
+  font-size: 1.1rem;
+  line-height: 1.5;
+  letter-spacing: 1px;
+}
+
 @media screen and (max-width: 1024px) {
   section {
     padding: 80px 30px;

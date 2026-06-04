@@ -76,6 +76,8 @@
   width: 100%;
 }
 .card-popular {
+  grid-row: 1;
+  grid-column: 1;
   background: linear-gradient(
     135deg,
     var(--dark3) 0%,
