@@ -1,5 +1,7 @@
 @import url(./src/styles/header.css);
 @import url(./src/styles/hero.css);
+@import url(./src/styles/services.css);
+@import url(./src/styles/barbers.css);
 
 * {
   box-sizing: border-box;
@@ -30,15 +32,128 @@ body {
   cursor: default;
 }
 
-section {
+section,
+#services .inner {
   padding: 100px 60px;
   max-width: 1300px;
   margin: 0 auto;
 }
 
+.subtitle-tag {
+  display: inline-flex;
+  color: var(--gold);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  align-items: center;
+  font-weight: 500;
+  gap: 12px;
+  margin-bottom: 24px;
+}
 
-@media screen and (max-width: 768px) {
+.subtitle-tag::before {
+  content: " ";
+  display: block;
+  width: 30px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.action-btn {
+  position: relative;
+  background: var(--gold);
+  border: none;
+  color: var(--black);
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+}
+.action-btn span {
+  position: relative;
+  inset: 1;
+}
+.action-btn::before {
+  content: "";
+  inset: 0;
+  width: 0%;
+  left: 0;
+  top: 0;
+  position: absolute;
+  background: var(--gold-light);
+  height: 100%;
+  transition: width 0.4s ease-in-out;
+}
+.action-btn:hover::before {
+  width: 100%;
+}
+
+.gold-divider {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  padding: 6px 60px;
+  max-width: 1300px;
+  gap: 20px;
+}
+.gold-divider {
+  color: var(--gold);
+  font-size: 0.8rem;
+}
+.gold-divider::before,
+.gold-divider::after {
+  content: "";
+  background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.3));
+  flex: 1;
+  height: 1px;
+}
+.gold-divider::after {
+  background: linear-gradient(90deg, rgba(201, 168, 76, 0.3), transparent);
+}
+
+.section-hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(201, 168, 76, 0.2),
+    transparent
+  );
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  margin: 0 0 20px;
+}
+.section-title .italic {
+  font-style: italic;
+  font-weight: 400;
+}
+.section-title .gold {
+  color: var(--gold);
+}
+
+.section-sub {
+  max-width: 600px;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  color: rgba(245, 240, 232, 0.5);
+  font-size: 1.1rem;
+  line-height: 1.5;
+  letter-spacing: 1px;
+}
+
+@media screen and (max-width: 1024px) {
+  section {
+    padding: 80px 30px;
+  }
+}
+/* @media screen and (max-width: 768px) {
   section {
     padding: clamp(30px, 10vw, 100px);
   }
-}
+} */

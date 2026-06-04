@@ -1,0 +1,156 @@
+#services {
+  background: var(--dark);
+  max-width: 100%;
+  padding: 120px 0;
+}
+
+#services_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 70px;
+}
+.services-title {
+  font-family: "Playfair Display", serif;
+  /* letter-spacing: 1px; */
+  line-height: 1;
+  font-weight: 700;
+  margin-bottom: 20px;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+}
+.services-title span {
+  color: var(--gold);
+}
+.services-sub {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.1rem;
+  max-width: 600px;
+  font-style: italic;
+  margin-bottom: 20px;
+  line-height: 1.7;
+  color: rgba(245, 240, 232, 0.55);
+}
+.div-btn-service {
+  display: flex;
+  align-items: center;
+}
+#services_btn {
+  display: inline-block;
+  text-align: center;
+  text-wrap: nowrap;
+  font-size: 0.7rem;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 3px;
+  font-weight: 600;
+  padding: 16px 40px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: rgba(201, 168, 76, 0.1);
+  gap: 2px;
+}
+.cards-services {
+  position: relative;
+  background: var(--dark2);
+  padding: 50px 40px;
+  transition: background 0.2s ease-in-out;
+}
+.cards-services:hover {
+  background: var(--dark3);
+}
+
+.cards-services::after {
+  position: absolute;
+  content: "";
+  background: var(--gold);
+  height: 2px;
+  width: 0%;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: width 0.4s ease-in-out;
+}
+.cards-services:hover::after {
+  width: 100%;
+}
+.card-popular {
+  grid-row: 1;
+  grid-column: 1;
+  background: linear-gradient(
+    135deg,
+    var(--dark3) 0%,
+    rgba(201, 168, 76, 0.08) 100%
+  );
+  border: 1px solid rgba(201, 168, 76, 0.3);
+}
+.card-popular .service-badge {
+    display: block;
+}
+.service-badge {
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 0.55rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: "Montserrat", sans-serif;
+    background: var(--gold);
+    color: var(--black);
+}
+.services-icon {
+  display: block;
+  font-size: 2.5rem;
+  margin: 0 0 24px;
+}
+.cards-titles {
+  font-family: "Playfair Display", serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.cards-subtitles {
+  font-size: 0.8rem;
+  line-height: 1.7;
+  color: var(--gray);
+  margin-bottom: 30px;
+}
+.service-price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.service-price {
+  font-family: "PlayFair Display";
+  color: var(--gold);
+  font-size: 1.8rem;
+}
+.service-price span {
+  font-family: "Montserrat", sans-serif;
+  color: var(--gray);
+  font-size: 0.75rem;
+  vertical-align: super;
+  margin-right: 6px;
+}
+
+.service-duration {
+  color: var(--gray);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+@media screen and (max-width: 1024px) {
+    #services_header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+}

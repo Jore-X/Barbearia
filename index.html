@@ -12,6 +12,10 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link
+      href="https://cdn.boxicons.com/3.0.8/fonts/filled/boxicons-filled.min.css"
+      rel="stylesheet"
+    />
 
     <!-- ________________LINKs DE FONTES_____________________ -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -68,12 +72,14 @@
       </div>
     </header>
     <main>
-      <section id="hero" class="sections">
+      <section id="hero" class="sections" style="padding: 0; max-width: 100%">
         <div class="hero-bg"></div>
         <div class="hero-grid"></div>
         <div id="hero_content">
-          <div id="hero_text_box">
-            <div id="hero_tag">Desde 2010 · Tradição & Excelência</div>
+          <div id="hero_text_bo">
+            <div id="hero_tag" class="subtitle-tag">
+              Desde 2010 · Tradição & Excelência
+            </div>
             <h1 id="hero_title">
               A Arte <br />
               <span class="italic">do Corte</span><br />
@@ -83,8 +89,8 @@
               Onde a tradição encontra o refinamento. <br />
               Cada visita, uma experiência única.
             </p>
-            <div id="div-hero-buttons">
-              <a id="hero_btn_agend" class="hero-buttons">
+            <div id="div_hero_buttons">
+              <a class="hero-buttons action-btn">
                 <span>AGENDAR HORÁRIO</span>
               </a>
               <a id="hero_btn_services" class="hero-buttons">VER SERVIÇOS</a>
@@ -111,6 +117,257 @@
                 <span class="stat-num">4.9</span>
                 <span class="stat-label">Avaliação Média</span>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="gold-divider"><i class="fa-solid fa-scissors"></i></div>
+
+      <section id="services">
+        <div class="inner">
+          <div id="services_header">
+            <div>
+              <div class="subtitle-tag">o que fazemos</div>
+              <div class="services-title">Nossos <span>Serviços</span></div>
+              <p class="services-sub">
+                Cada procedimento executado com maestria, produtos premium e
+                atenção absoluta aos detalhes.
+              </p>
+            </div>
+            <div class="div-btn-service">
+              <a href="" id="services_btn" class="action-btn">
+                <span> Agendar agora </span>
+              </a>
+            </div>
+          </div>
+
+          <div class="services-grid">
+            <div class="cards-services card-popular">
+              <div class="service-badge">Mais popular</div>
+              <span class="services-icon">✂️</span>
+              <div class="cards-titles">Corte Clássico</div>
+              <p class="cards-subtitles">
+                O corte que nunca sai de moda. Tesoura, máquina e acabamento
+                impecável com navalha.
+              </p>
+              <div class="service-price-row">
+                <div class="service-price"><span>R$</span>60</div>
+                <div class="service-duration">~ 45 min</div>
+              </div>
+            </div>
+            <div class="cards-services">
+              <div class="service-badge">Mais popular</div>
+              <span class="services-icon">🪒</span>
+              <div class="cards-titles">Barba Completa</div>
+              <p class="cards-subtitles">
+                Navalha quente, toalha aquecida, contorno perfeito. A
+                experiência clássica da barbearia.
+              </p>
+              <div class="service-price-row">
+                <div class="service-price"><span>R$</span>55</div>
+                <div class="service-duration">~ 40 min</div>
+              </div>
+            </div>
+            <div class="cards-services">
+              <div class="service-badge">Mais popular</div>
+              <span class="services-icon">💎</span>
+              <div class="cards-titles">Corte + Barba</div>
+              <p class="cards-subtitles">
+                O combo completo para o homem que valoriza cada detalhe da sua
+                aparência.
+              </p>
+              <div class="service-price-row">
+                <div class="service-price"><span>R$</span>100</div>
+                <div class="service-duration">~ 80 min</div>
+              </div>
+            </div>
+            <div class="cards-services">
+              <div class="service-badge">Mais popular</div>
+              <span class="services-icon">🎨</span>
+              <div class="cards-titles">Degradê Americano</div>
+              <p class="cards-subtitles">
+                Fade preciso, degradê impecável. Técnica americana com
+                acabamento à navalha.
+              </p>
+              <div class="service-price-row">
+                <div class="service-price"><span>R$</span>70</div>
+                <div class="service-duration">~ 50 min</div>
+              </div>
+            </div>
+            <div class="cards-services">
+              <div class="service-badge">Mais popular</div>
+              <span class="services-icon">🌿</span>
+              <div class="cards-titles">Tratamento Capilar</div>
+              <p class="cards-subtitles">
+                Hidratação profunda com produtos premium. Cabelo revitalizado e
+                com brilho natural.
+              </p>
+              <div class="service-price-row">
+                <div class="service-price"><span>R$</span>90</div>
+                <div class="service-duration">~ 60 min</div>
+              </div>
+            </div>
+            <div class="cards-services">
+              <div class="service-badge">Mais popular</div>
+              <span class="services-icon">👑</span>
+              <div class="cards-titles">Ritual Premium</div>
+              <p class="cards-subtitles">
+                Corte + Barba + Hidratação + Massagem craniana. A experiência
+                completa de bem-estar.
+              </p>
+              <div class="service-price-row">
+                <div class="service-price"><span>R$</span>180</div>
+                <div class="service-duration">~ 2H</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <hr class="section-hr" />
+      <section id="barbers">
+        <div id="barbers_header">
+          <div class="subtitle-tag">Nossa Equipe</div>
+          <div class="section-title">
+            Os <span class="italic">Mestres</span>
+            <span class="gold">da Arte</span>
+          </div>
+          <p class="section-sub">
+            Profissionais apaixonados, treinados nos melhores salões do Brasil e
+            do mundo.
+          </p>
+        </div>
+        <div class="barbers-grid">
+          <div class="cards-barbers">
+            <div class="barber-img">
+              <img
+                src="./src/assets/img/barbers/perfil-purple.jpg"
+                class="barber-img-fill"
+              />
+              <div class="barber-see-more">
+                <div class="text-see-more">
+                  Ver Mais
+                  <i class="bxf bx-finger-touch"></i>
+                </div>
+              </div>
+              <div class="barber-overlay">
+                <div>
+                  <div class="overlay-title">Especialidade</div>
+                  <div class="overlay-bio">
+                    Mestre do degradê e técnicas americanas. 12 anos de
+                    experiência em barbearias de São Paulo e Nova Iorque.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="barber-info">
+              <div class="barber-name">
+                Rafael Moura
+                <span>Master Barber</span>
+              </div>
+              <div class="barber-rating">
+                <div class="stars">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <div class="rating-num">4.9</div>
+              </div>
+            </div>
+          </div>
+          <div class="cards-barbers">
+            <div class="barber-img">
+              <img
+                src="./src/assets/img/barbers/perfil-green.jpg"
+                class="barber-img-fill"
+              />
+              <div class="barber-see-more">
+                <div class="text-see-more">
+                  Ver Mais
+                  <i class="bxf bx-finger-touch"></i>
+                </div>
+              </div>
+              <div class="barber-overlay">
+                <div>
+                  <div class="overlay-title">Especialidade</div>
+                  <div class="overlay-bio">
+                    Especialista em barbas complexas e navalha. Formado na
+                    Escola de Barbearia Antiga de Lisboa.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="barber-info">
+              <div class="barber-name">
+                Lucas Andrade
+                <span>Barbeiro Especialista</span>
+              </div>
+              <div class="barber-rating">
+                <div class="stars">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                </div>
+                <div class="rating-num">4.4</div>
+              </div>
+            </div>
+          </div>
+          <div class="cards-barbers">
+            <div class="barber-img">
+              <img
+                src="./src/assets/img/barbers/perfil-orange.jpg"
+                class="barber-img-fill"
+              />
+              <div class="barber-see-more">
+                <div class="text-see-more">
+                  Ver Mais
+                  <i class="bxf bx-finger-touch"></i>
+                </div>
+              </div>
+              <div class="barber-overlay">
+                <div>
+                  <div class="overlay-title">Especialidade</div>
+                  <div class="overlay-bio">
+                    Especialista em tratamentos capilares e coloração masculina.
+                    Premiado em competições nacionais.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="barber-info">
+              <div class="barber-name">
+                Diego Santos
+                <span>Hair stylist</span>
+              </div>
+              <div class="barber-rating">
+                <div class="stars">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <div class="rating-num">4.9</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <hr class="section-hr" />
+      <section id="gallery">
+        <div class="inner">
+          <div class="gallery-header">
+            <div class="subtitle-tag">Nosso Trabalho</div>
+            <div class="section-title">
+              A
+              <span class="gold"> Galeria </span>
+            </div>
+            <div class="section-sub">
+              Cada corte é uma obra de arte. Veja alguns dos trabalhos mais
+              recentes
             </div>
           </div>
         </div>

@@ -27,7 +27,7 @@ header.mobile-active {
 
 #header_logo {
   font-family: "Play Fair Display", serif;
-  font-size: 1.7rem;
+  font-size: 1.4rem;
   letter-spacing: 2px;
   font-weight: 700;
 }
@@ -63,7 +63,7 @@ header.mobile-active {
   font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
   font-weight: 600;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   letter-spacing: 3px;
   color: var(--gray);
   text-decoration: none;
