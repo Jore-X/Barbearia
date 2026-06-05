@@ -2,6 +2,7 @@
 @import url(./src/styles/hero.css);
 @import url(./src/styles/services.css);
 @import url(./src/styles/barbers.css);
+@import url(./src/styles/gallery.css);
 
 * {
   box-sizing: border-box;
@@ -21,6 +22,9 @@
   --gray: #888888;
   --light: #f5f0e8;
   --cream: #faf7f2;
+}
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -148,7 +152,8 @@ section,
 }
 
 @media screen and (max-width: 1024px) {
-  section {
+  section,
+  #services .inner {
     padding: 80px 30px;
   }
 }
