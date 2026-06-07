@@ -3,6 +3,7 @@
 @import url(./src/styles/services.css);
 @import url(./src/styles/barbers.css);
 @import url(./src/styles/gallery.css);
+@import url(./src/styles/reviews.css);
 
 * {
   box-sizing: border-box;
@@ -37,7 +38,7 @@ body {
 }
 
 section,
-#services .inner {
+.inner {
   padding: 100px 60px;
   max-width: 1300px;
   margin: 0 auto;
@@ -153,7 +154,7 @@ section,
 
 @media screen and (max-width: 1024px) {
   section,
-  #services .inner {
+  .inner {
     padding: 80px 30px;
   }
 }
