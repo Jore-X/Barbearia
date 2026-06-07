@@ -91,6 +91,7 @@
   display: inline-block;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
   cursor: pointer;
   letter-spacing: 3px;
   font-size: 0.75rem;

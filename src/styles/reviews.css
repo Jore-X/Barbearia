@@ -1,0 +1,68 @@
+#reviews {
+  background: var(--dark);
+  max-width: 100%;
+  padding: 120px 0;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background-color: rgba(201, 168, 76, 0.15);
+  margin: 70px 0 0;
+}
+
+.review-card {
+  padding: 44px 40px;
+  background: var(--dark2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: background 0.3s ease-in-out;
+}
+.review-card:hover {
+    background: var(--dark3);
+}
+.review-card .stars {
+  color: var(--gold);
+  font-size: 0.5rem;
+  letter-spacing: 2px;
+  margin: 0 0 24px;
+}
+
+.review-text {
+  font-family: "Cormorant Garamond", serif;
+  color: rgba(245, 240, 232, 0.75);
+  font-style: italic;
+  line-height: 1.7;
+  font-size: 1.1rem;
+  margin: 0 0 28px;
+}
+.review-user {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.review-user .user-avatar {
+  border-radius: 100%;
+  max-width: 50px;
+  width: 20%;
+}
+.review-user .user-name {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+.review-user .user-time {
+  color: var(--gray);
+  font-size: 0.7rem;
+  margin: 2px 0 0;
+}
+
+
+@media screen and (max-width: 768px) {
+    .reviews-grid {
+        grid-template-columns: 1fr;
+    }
+}
