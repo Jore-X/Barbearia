@@ -4,6 +4,7 @@
 @import url(./src/styles/barbers.css);
 @import url(./src/styles/gallery.css);
 @import url(./src/styles/reviews.css);
+@import url(./src/styles/footer.css);
 
 * {
   box-sizing: border-box;
@@ -35,6 +36,22 @@ body {
   font-weight: 300;
   overflow-x: hidden;
   cursor: default;
+}
+
+.logo {
+  font-family: "Play Fair Display", serif;
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+  font-weight: 700;
+  filter: drop-shadow(0 0 3px black);
+  text-decoration: none;
+  color: var(--light);
+  text-transform: uppercase;
+}
+
+.logo span {
+  color: var(--gold);
+  font-family: "Play Fair Display", serif;
 }
 
 section,

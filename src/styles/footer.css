@@ -1,0 +1,78 @@
+#contact {
+    padding: 80px 0 0;
+}
+
+#contact .inner {
+    padding: 0 40px;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 80px;
+  padding: 0 0 60px;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+}
+
+.contact-itens {
+    max-width: 500px;
+}
+
+.footer-header .section-sub {
+  margin: 24px 0 0;
+}
+
+.social-links {
+  margin: 24px 0 0;
+  display: flex;
+  gap: 24px;
+}
+.social-links a {
+  text-decoration: none;
+  border: 2px solid var(--gold-dark);
+  color: var(--gold);
+  border-radius: 25%;
+  padding: 8px;
+}
+.footer-location {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-location .location-item {
+  text-decoration: none;
+  color: var(--gray);
+  font-size: 0.9rem;
+}
+
+.footer-location .location-item span {
+  margin: 0 10px;
+}
+
+.footer-hours {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 28px 0 0;
+}
+
+.footer-hours .hours-item {
+  color: var(--gray);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.footer-bottom {
+  color: rgba(136, 136, 136, 0.5);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 60px;
+}
+
+.footer-bottom-itens {
+  font-size: 0.62rem;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 1px;
+  font-weight: 400;
+}
