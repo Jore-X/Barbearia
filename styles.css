@@ -4,6 +4,7 @@
 @import url(./src/styles/barbers.css);
 @import url(./src/styles/gallery.css);
 @import url(./src/styles/reviews.css);
+@import url(./src/styles/reservation.css);
 @import url(./src/styles/footer.css);
 
 * {

@@ -1,0 +1,32 @@
+#reservation {
+  background: var(--dark);
+}
+.reservation-header {
+    margin: 0 0 30px;
+}
+
+.lt-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.3rem, 2vw, 2.2rem);
+  font-weight: 700;
+}
+
+.lt-subtitle {
+  max-width: 600px;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  color: rgba(245, 240, 232, 0.5);
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 1px;
+}
+
+.lt-flexbox-card {
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+.lt-flexbox-icon {
+    border: 1px solid var(--gold-dark);
+    padding: 0.3rem;
+}
