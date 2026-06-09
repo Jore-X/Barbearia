@@ -89,6 +89,7 @@ header.mobile-active {
 
 #CTA_btn {
   cursor: pointer;
+  text-decoration: none;
   letter-spacing: 3px;
   background: transparent;
   color: var(--gold);
