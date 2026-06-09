@@ -5,6 +5,7 @@
 @import url(./src/styles/gallery.css);
 @import url(./src/styles/reviews.css);
 @import url(./src/styles/reservation.css);
+@import url(./src/styles/reservation-form.css);
 @import url(./src/styles/footer.css);
 
 * {
@@ -37,6 +38,12 @@ body {
   font-weight: 300;
   overflow-x: hidden;
   cursor: default;
+}
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: var(--light);
 }
 
 .logo {
