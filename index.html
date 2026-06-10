@@ -566,25 +566,35 @@
             <div class="layout-form">
               <div class="layout-form-inner">
                 <div class="LF-header">
-                  <button class="LF-header-item selected">
-                    <span>1</span>
-                    <p>Serviço</p>
+                  <button class="LF-header-item">
+                    <div>
+                      <span>1</span>
+                      <p>Serviço</p>
+                    </div>
                   </button>
                   <button class="LF-header-item">
-                    <span>2</span>
-                    <p>Barbeiro</p>
+                    <div>
+                      <span>2</span>
+                      <p>Barbeiro</p>
+                    </div>
                   </button>
                   <button class="LF-header-item">
-                    <span>3</span>
-                    <p>Data & Hora</p>
+                    <div>
+                      <span>3</span>
+                      <p>Data & Hora</p>
+                    </div>
                   </button>
                   <button class="LF-header-item">
-                    <span>4</span>
-                    <p>Seus Dados</p>
+                    <div>
+                      <span>4</span>
+                      <p>Seus Dados</p>
+                    </div>
                   </button>
                   <button class="LF-header-item">
-                    <span>5</span>
-                    <p>Resumo</p>
+                    <div>
+                      <span>5</span>
+                      <p>Resumo</p>
+                    </div>
                   </button>
                 </div>
                 <div class="LF-item-box">
@@ -595,29 +605,35 @@
                     </div>
                   </div>
                   <div class="layout-service-options">
-                    <button class="LSO-item">
+                    <button class="LSO-item" value="classic">
+                      <div class="selected-icon">✓</div>
                       <div class="LSO-title">✂️ Corte Clássico</div>
                       <div class="LSO-item-info">45 min <span>R$ 60</span></div>
                     </button>
-                    <button class="LSO-item">
+                    <button class="LSO-item" value="full_beard">
+                      <div class="selected-icon">✓</div>
                       <div class="LSO-title">🪒 Barba Completa</div>
                       <div class="LSO-item-info">40 min <span>R$ 55</span></div>
                     </button>
-                    <button class="LSO-item">
+                    <button class="LSO-item" value="cut_beard">
+                      <div class="selected-icon">✓</div>
                       <div class="LSO-title">💎 Corte + Barba</div>
                       <div class="LSO-item-info">
                         80 min <span>R$ 100</span>
                       </div>
                     </button>
-                    <button class="LSO-item">
+                    <button class="LSO-item" value="american_fade">
+                      <div class="selected-icon">✓</div>
                       <div class="LSO-title">🎨 Degradê Americano</div>
                       <div class="LSO-item-info">50 min <span>R$ 70</span></div>
                     </button>
-                    <button class="LSO-item">
+                    <button class="LSO-item" value="hair_tratament">
+                      <div class="selected-icon">✓</div>
                       <div class="LSO-title">🌿 Tratamento Capilar</div>
                       <div class="LSO-item-info">60 min <span>R$ 90</span></div>
                     </button>
-                    <button class="LSO-item">
+                    <button class="LSO-item" value="premium_ritual">
+                      <div class="selected-icon">✓</div>
                       <div class="LSO-title">👑 Ritual Premium</div>
                       <div class="LSO-item-info">2h <span>R$ 180</span></div>
                     </button>
@@ -684,5 +700,6 @@
       </div>
     </footer>
     <script src="./script.js"></script>
+    <script src="./src/scripts/script-form.js"></script>
   </body>
 </html>

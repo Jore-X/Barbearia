@@ -19,6 +19,12 @@
   cursor: pointer;
   background: none;
   border: none;
+  color: var(--gray);
+  position: relative;
+}
+.LF-header-item div {
+  opacity: 0.5;
+  width: 100%;
   display: flex;
   text-align: center;
   align-items: center;
@@ -29,9 +35,9 @@
   font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 2px;
-  color: var(--gray);
+  transition: opacity 0.3s ease;
 }
-.LF-header-item span {
+.LF-header-item div span {
   width: 20px;
   height: 20px;
   border-radius: 100%;
@@ -44,13 +50,51 @@
   text-align: center;
 }
 
-.LF-header-item.selected {
-  display: flex;
+.LF-header-item.confirmed div {
+  opacity: 0.5;
   color: var(--gold);
-  border-bottom: 1px solid var(--gold);
+  transition: opacity 0.3s ease-in-out;
 }
 
-.LF-header-item.selected p {
+.LF-header-item.selected div,
+.LF-header-item.selected-back div{
+  opacity: 1;
+  display: flex;
+  color: var(--gold);
+  transition: opacity 0.3s ease-in-out;
+}
+
+.LF-header-item::after {
+  opacity: 1;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--gold);
+  transition: width 0.3s ease-in;
+  right: auto;
+  left: auto;
+}
+.LF-header-item.anim-next::after {
+  left: 0;
+}
+.LF-header-item.anim-back::after {
+  right: 0;
+}
+
+.LF-header-item.selected::after {
+  left: 0;
+  width: 100%;
+}
+.LF-header-item.selected-back::after {
+  left: auto;
+  right: 0;
+  width: 100%;
+}
+
+.LF-header-item.selected p,
+.LF-header-item.selected-rev p {
   display: flex;
 }
 
@@ -78,7 +122,15 @@
   gap: 16px;
   margin: 24px 0 0;
 }
+.selected-icon {
+  display: none;
+  color: var(--gold);
+  position: absolute;
+  top: 8px;
+  right: 12px;
+}
 .LSO-item {
+  position: relative;
   background: var(--dark3);
   border: 1px solid rgba(201, 168, 76, 0.1);
   padding: 16px 24px;
@@ -86,6 +138,13 @@
 }
 .LSO-item:hover {
   border: 1px solid rgba(201, 168, 76, 0.4);
+}
+.LSO-item.service-selected {
+  border: 1px solid var(--gold);
+  background: rgba(201, 168, 76, 0.05);
+}
+.LSO-item.service-selected .selected-icon {
+  display: block;
 }
 
 .LSO-title {
@@ -103,7 +162,7 @@
 }
 
 .LSO-item-info span {
-  color: var(--gold);
+  color: rgba(201, 168, 76, 0.7);
 }
 
 .LF-footer {
@@ -130,6 +189,14 @@
   color: var(--dark);
   background: var(--gold);
   font-weight: 700;
+  cursor: not-allowed;
+  pointer-events: none;
+  transition: opacity 0.4s ease-in-out;
+}
+.btn-next.allowed {
+  cursor: pointer;
+  pointer-events: auto;
+  opacity: 1;
 }
 
 @media screen and (max-width: 768px) {
