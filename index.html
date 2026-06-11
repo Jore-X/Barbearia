@@ -597,46 +597,252 @@
                     </div>
                   </button>
                 </div>
-                <div class="LF-item-box">
-                  <div class="LF-ib-header">
-                    <div class="LF-titles">Qual Serviço você deseja?</div>
-                    <div class="LF-subtitles">
-                      Selecione um serviço para continuar.
+                <div class="layout-form-grid">
+                  <div class="LF-item-box LF-grid-item">
+                    <div class="LF-ib-header">
+                      <div class="LF-titles">Qual Serviço você deseja?</div>
+                      <div class="LF-subtitles">
+                        Selecione um serviço para continuar.
+                      </div>
+                    </div>
+                    <div class="layout-service-options">
+                      <button class="LSO-item" value="classic">
+                        <div class="selected-icon">✓</div>
+                        <div class="LSO-title">✂️ Corte Clássico</div>
+                        <div class="LSO-item-info">
+                          45 min <span>R$ 60</span>
+                        </div>
+                      </button>
+                      <button class="LSO-item" value="full_beard">
+                        <div class="selected-icon">✓</div>
+                        <div class="LSO-title">🪒 Barba Completa</div>
+                        <div class="LSO-item-info">
+                          40 min <span>R$ 55</span>
+                        </div>
+                      </button>
+                      <button class="LSO-item" value="cut_beard">
+                        <div class="selected-icon">✓</div>
+                        <div class="LSO-title">💎 Corte + Barba</div>
+                        <div class="LSO-item-info">
+                          80 min <span>R$ 100</span>
+                        </div>
+                      </button>
+                      <button class="LSO-item" value="american_fade">
+                        <div class="selected-icon">✓</div>
+                        <div class="LSO-title">🎨 Degradê Americano</div>
+                        <div class="LSO-item-info">
+                          50 min <span>R$ 70</span>
+                        </div>
+                      </button>
+                      <button class="LSO-item" value="hair_tratament">
+                        <div class="selected-icon">✓</div>
+                        <div class="LSO-title">🌿 Tratamento Capilar</div>
+                        <div class="LSO-item-info">
+                          60 min <span>R$ 90</span>
+                        </div>
+                      </button>
+                      <button class="LSO-item" value="premium_ritual">
+                        <div class="selected-icon">✓</div>
+                        <div class="LSO-title">👑 Ritual Premium</div>
+                        <div class="LSO-item-info">2h <span>R$ 180</span></div>
+                      </button>
                     </div>
                   </div>
-                  <div class="layout-service-options">
-                    <button class="LSO-item" value="classic">
-                      <div class="selected-icon">✓</div>
-                      <div class="LSO-title">✂️ Corte Clássico</div>
-                      <div class="LSO-item-info">45 min <span>R$ 60</span></div>
-                    </button>
-                    <button class="LSO-item" value="full_beard">
-                      <div class="selected-icon">✓</div>
-                      <div class="LSO-title">🪒 Barba Completa</div>
-                      <div class="LSO-item-info">40 min <span>R$ 55</span></div>
-                    </button>
-                    <button class="LSO-item" value="cut_beard">
-                      <div class="selected-icon">✓</div>
-                      <div class="LSO-title">💎 Corte + Barba</div>
-                      <div class="LSO-item-info">
-                        80 min <span>R$ 100</span>
+                  <div class="LF-item-box LF-grid-item">
+                    <div class="LF-ib-header">
+                      <div class="LF-titles">Escolha seu barbeiro</div>
+                      <div class="LF-subtitles">
+                        Ou escolha "Qualquer Disponível" para o primeiro horário
+                        livre.
                       </div>
-                    </button>
-                    <button class="LSO-item" value="american_fade">
-                      <div class="selected-icon">✓</div>
-                      <div class="LSO-title">🎨 Degradê Americano</div>
-                      <div class="LSO-item-info">50 min <span>R$ 70</span></div>
-                    </button>
-                    <button class="LSO-item" value="hair_tratament">
-                      <div class="selected-icon">✓</div>
-                      <div class="LSO-title">🌿 Tratamento Capilar</div>
-                      <div class="LSO-item-info">60 min <span>R$ 90</span></div>
-                    </button>
-                    <button class="LSO-item" value="premium_ritual">
-                      <div class="selected-icon">✓</div>
-                      <div class="LSO-title">👑 Ritual Premium</div>
-                      <div class="LSO-item-info">2h <span>R$ 180</span></div>
-                    </button>
+                    </div>
+                    <div class="layout-barber-options">
+                      <button class="LBO-item" value="disponible">
+                        <div class="LBO-icon">🎲</div>
+                        <div class="LBO-title">
+                          Qualquer <span>Disponível</span>
+                        </div>
+                      </button>
+                      <button class="LBO-item" value="rafael">
+                        <div class="LBO-icon">
+                          <img
+                            src="./src/assets/img/barbers/perfil-purple.jpg"
+                            class="LBO-icon-img"
+                          />
+                        </div>
+                        <div class="LBO-title">Rafael <span>Master</span></div>
+                      </button>
+                      <button class="LBO-item" value="lucas">
+                        <div class="LBO-icon">
+                          <img
+                            src="./src/assets/img/barbers/perfil-green.jpg"
+                            class="LBO-icon-img"
+                          />
+                        </div>
+                        <div class="LBO-title">
+                          Lucas <span>Especialista</span>
+                        </div>
+                      </button>
+                      <button class="LBO-item" value="diego">
+                        <div class="LBO-icon">
+                          <img
+                            src="./src/assets/img/barbers/perfil-orange.jpg"
+                            class="LBO-icon-img"
+                          />
+                        </div>
+                        <div class="LBO-title">Diego <span>Stylist</span></div>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="LF-item-box LF-grid-item">
+                    <div class="LF-ib-header">
+                      <div class="LF-titles">Qual Serviço você deseja?</div>
+                      <div class="LF-subtitles">
+                        Selecione um serviço para continuar.
+                      </div>
+                    </div>
+                    <div class="layout-service-options">
+                      <button class="LSO-item" value="classic">
+                        <div class="selected-icon">✓</div>
+                        <div class="LSO-title">✂️ Corte Clássico</div>
+                        <div class="LSO-item-info">
+                          45 min <span>R$ 60</span>
+                        </div>
+                      </button>
+                      <button class="LSO-item" value="full_beard">
+                        <div class="selected-icon">✓</div>
+                        <div class="LSO-title">🪒 Barba Completa</div>
+                        <div class="LSO-item-info">
+                          40 min <span>R$ 55</span>
+                        </div>
+                      </button>
+                      <button class="LSO-item" value="cut_beard">
+                        <div class="selected-icon">✓</div>
+                        <div class="LSO-title">💎 Corte + Barba</div>
+                        <div class="LSO-item-info">
+                          80 min <span>R$ 100</span>
+                        </div>
+                      </button>
+                      <button class="LSO-item" value="american_fade">
+                        <div class="selected-icon">✓</div>
+                        <div class="LSO-title">🎨 Degradê Americano</div>
+                        <div class="LSO-item-info">
+                          50 min <span>R$ 70</span>
+                        </div>
+                      </button>
+                      <button class="LSO-item" value="hair_tratament">
+                        <div class="selected-icon">✓</div>
+                        <div class="LSO-title">🌿 Tratamento Capilar</div>
+                        <div class="LSO-item-info">
+                          60 min <span>R$ 90</span>
+                        </div>
+                      </button>
+                      <button class="LSO-item" value="premium_ritual">
+                        <div class="selected-icon">✓</div>
+                        <div class="LSO-title">👑 Ritual Premium</div>
+                        <div class="LSO-item-info">2h <span>R$ 180</span></div>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="LF-item-box LF-grid-item">
+                    <div class="LF-ib-header">
+                      <div class="LF-titles">Qual Serviço você deseja?</div>
+                      <div class="LF-subtitles">
+                        Selecione um serviço para continuar.
+                      </div>
+                    </div>
+                    <div class="layout-service-options">
+                      <button class="LSO-item" value="classic">
+                        <div class="selected-icon">✓</div>
+                        <div class="LSO-title">✂️ Corte Clássico</div>
+                        <div class="LSO-item-info">
+                          45 min <span>R$ 60</span>
+                        </div>
+                      </button>
+                      <button class="LSO-item" value="full_beard">
+                        <div class="selected-icon">✓</div>
+                        <div class="LSO-title">🪒 Barba Completa</div>
+                        <div class="LSO-item-info">
+                          40 min <span>R$ 55</span>
+                        </div>
+                      </button>
+                      <button class="LSO-item" value="cut_beard">
+                        <div class="selected-icon">✓</div>
+                        <div class="LSO-title">💎 Corte + Barba</div>
+                        <div class="LSO-item-info">
+                          80 min <span>R$ 100</span>
+                        </div>
+                      </button>
+                      <button class="LSO-item" value="american_fade">
+                        <div class="selected-icon">✓</div>
+                        <div class="LSO-title">🎨 Degradê Americano</div>
+                        <div class="LSO-item-info">
+                          50 min <span>R$ 70</span>
+                        </div>
+                      </button>
+                      <button class="LSO-item" value="hair_tratament">
+                        <div class="selected-icon">✓</div>
+                        <div class="LSO-title">🌿 Tratamento Capilar</div>
+                        <div class="LSO-item-info">
+                          60 min <span>R$ 90</span>
+                        </div>
+                      </button>
+                      <button class="LSO-item" value="premium_ritual">
+                        <div class="selected-icon">✓</div>
+                        <div class="LSO-title">👑 Ritual Premium</div>
+                        <div class="LSO-item-info">2h <span>R$ 180</span></div>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="LF-item-box LF-grid-item">
+                    <div class="LF-ib-header">
+                      <div class="LF-titles">Qual Serviço você deseja?</div>
+                      <div class="LF-subtitles">
+                        Selecione um serviço para continuar.
+                      </div>
+                    </div>
+                    <div class="layout-service-options">
+                      <button class="LSO-item" value="classic">
+                        <div class="selected-icon">✓</div>
+                        <div class="LSO-title">✂️ Corte Clássico</div>
+                        <div class="LSO-item-info">
+                          45 min <span>R$ 60</span>
+                        </div>
+                      </button>
+                      <button class="LSO-item" value="full_beard">
+                        <div class="selected-icon">✓</div>
+                        <div class="LSO-title">🪒 Barba Completa</div>
+                        <div class="LSO-item-info">
+                          40 min <span>R$ 55</span>
+                        </div>
+                      </button>
+                      <button class="LSO-item" value="cut_beard">
+                        <div class="selected-icon">✓</div>
+                        <div class="LSO-title">💎 Corte + Barba</div>
+                        <div class="LSO-item-info">
+                          80 min <span>R$ 100</span>
+                        </div>
+                      </button>
+                      <button class="LSO-item" value="american_fade">
+                        <div class="selected-icon">✓</div>
+                        <div class="LSO-title">🎨 Degradê Americano</div>
+                        <div class="LSO-item-info">
+                          50 min <span>R$ 70</span>
+                        </div>
+                      </button>
+                      <button class="LSO-item" value="hair_tratament">
+                        <div class="selected-icon">✓</div>
+                        <div class="LSO-title">🌿 Tratamento Capilar</div>
+                        <div class="LSO-item-info">
+                          60 min <span>R$ 90</span>
+                        </div>
+                      </button>
+                      <button class="LSO-item" value="premium_ritual">
+                        <div class="selected-icon">✓</div>
+                        <div class="LSO-title">👑 Ritual Premium</div>
+                        <div class="LSO-item-info">2h <span>R$ 180</span></div>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>

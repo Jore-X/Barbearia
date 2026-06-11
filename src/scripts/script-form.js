@@ -1,11 +1,22 @@
 const btnService = document.querySelectorAll(".LSO-item");
+const btnBarber = document.querySelectorAll(".LBO-item");
 const formHeader = document.querySelectorAll(".LF-header-item");
 const nextBtn = document.querySelector(".btn-next");
 const backBtn = document.querySelector(".btn-back");
 console.log(btnService);
 console.log(formHeader);
+const grids_all = document.querySelectorAll(".layout-form-grid > *");
+const grid1 = document.querySelector(".layout-form-grid > :nth-child(1)");
+const grid2 = document.querySelector(".layout-form-grid > :nth-child(2)");
+const grid3 = document.querySelector(".layout-form-grid > :nth-child(3)");
+const grid4 = document.querySelector(".layout-form-grid > :nth-child(4)");
+const grid5 = document.querySelector(".layout-form-grid > :nth-child(5)");
+console.log(grids_all);
 
 let service_selected = "";
+let barber_selected = "";
+let allow_btn = 0;
+console.log(allow_btn);
 
 const showBack_btn = (index_selected) => {
   if (index_selected > 0) {
@@ -21,6 +32,42 @@ const checked_head = (index_selected) => {
   }
 };
 
+const allow_btn_check = (index_selected) => {
+  if (allow_btn >= index_selected && service_selected != "" && allow_btn < 1) {
+    nextBtn.classList.add("allowed");
+  } else if (allow_btn >= index_selected && barber_selected != "" && allow_btn < 2) {
+    nextBtn.classList.add("allowed");
+  }
+};
+
+const toggle_grid = (index_selected) => {
+  for (i = 0; i < index_selected; i++) {
+    grids_all[i].classList.remove("grid-active", "grid-desactive");
+    grids_all[i].classList.add("grid-confirmed");
+  }
+  for (n = grids_all.length - 1; n > index_selected; n--) {
+    grids_all[n].classList.add("grid-desactive");
+    grids_all[n].classList.remove("grid-active", "grid-confirmed");
+  }
+
+  if (index_selected == 0) {
+    grids_all[n].classList.remove("grid-desactive", "grid-confirmed");
+    grid1.classList.add("grid-active");
+  } else if (index_selected == 1) {
+    grids_all[n].classList.remove("grid-desactive", "grid-confirmed");
+    grid2.classList.add("grid-active");
+  } else if (index_selected == 2) {
+    grids_all[n].classList.remove("grid-desactive", "grid-confirmed");
+    grid3.classList.add("grid-active");
+  } else if (index_selected == 3) {
+    grids_all[n].classList.remove("grid-desactive", "grid-confirmed");
+    grid4.classList.add("grid-active");
+  } else if (index_selected == 4) {
+    grids_all[n].classList.remove("grid-desactive", "grid-confirmed");
+    grid5.classList.add("grid-active");
+  }
+};
+
 btnService.forEach((botoes, index) => {
   botoes.addEventListener("click", () => {
     for (i = 0; i < btnService.length; i++) {
@@ -29,46 +76,66 @@ btnService.forEach((botoes, index) => {
     botoes.classList.add("service-selected");
     service_selected = btnService[index].value;
     console.log(service_selected + ": selecionado!");
-    nextBtn.classList.add("allowed");
+    allow_btn_check(index_selected);
   });
 });
-formHeader.forEach((head_btns, index) => {
-  let index_selected = 0;
-  formHeader[index_selected].classList.add("selected");
-  showBack_btn(index_selected);
-  nextBtn.addEventListener("click", () => {
-    if (index_selected < formHeader.length - 1) {
-      for (i = 0; i < formHeader.length; i++) {
-        formHeader[i].classList.add("anim-back");
-        formHeader[i].classList.remove("selected", "selected-back");
-      }
-      index_selected++;
-      formHeader[index_selected].classList.add("selected");
-      formHeader[index_selected].classList.remove("anim-back", "anim-next");
-
-      checked_head(index_selected);
-      showBack_btn(index_selected);
+btnBarber.forEach((botoes, index) => {
+  botoes.addEventListener("click", () => {
+    for (i = 0; i < btnBarber.length; i++) {
+      btnBarber[i].classList.remove("barber-selected");
     }
-  });
-  backBtn.addEventListener("click", () => {
-    if (index_selected > 0) {
-      for (i = 0; i < formHeader.length; i++) {
-        formHeader[i].classList.add("anim-next");
-        formHeader[i].classList.remove(
-          "selected",
-          "selected-back",
-          "confirmed",
-        );
-      }
-      index_selected--;
-      formHeader[index_selected].classList.add("selected-back");
-      formHeader[index_selected].classList.remove("anim-back", "anim-next");
-
-      checked_head(index_selected);
-      showBack_btn(index_selected);
-    }
+    botoes.classList.add("barber-selected");
+    barber_selected = btnBarber[index].value;
+    // allow_btn = 1;
+    console.log(barber_selected + ": selecionado!");
+    allow_btn_check(index_selected);
   });
 });
-for (i = 0; i < btnService.length; i++) {
-  console.log(i + " " + btnService[i].value);
-}
+// formHeader.forEach((head_btns, index) => {
+let index_selected = 0;
+toggle_grid(index_selected);
+formHeader[index_selected].classList.add("selected");
+showBack_btn(index_selected);
+nextBtn.addEventListener("click", () => {
+  nextBtn.classList.remove("allowed");
+  if (index_selected < formHeader.length - 1) {
+    for (i = 0; i < formHeader.length; i++) {
+      formHeader[i].classList.add("anim-back");
+      formHeader[i].classList.remove("selected", "selected-back");
+    }
+    index_selected++;
+    allow_btn++;
+    console.log(allow_btn);
+
+    formHeader[index_selected].classList.add("selected");
+    formHeader[index_selected].classList.remove("anim-back", "anim-next");
+    toggle_grid(index_selected);
+    checked_head(index_selected);
+    showBack_btn(index_selected);
+    allow_btn_check(index_selected);
+  }
+});
+backBtn.addEventListener("click", () => {
+  if (index_selected > 0) {
+    for (i = 0; i < formHeader.length; i++) {
+      formHeader[i].classList.add("anim-next");
+      formHeader[i].classList.remove("selected", "selected-back", "confirmed");
+    }
+    index_selected--;
+    allow_btn--;
+    console.log(allow_btn);
+
+    toggle_grid(index_selected);
+
+    formHeader[index_selected].classList.add("selected-back");
+    formHeader[index_selected].classList.remove("anim-back", "anim-next");
+
+    checked_head(index_selected);
+    showBack_btn(index_selected);
+    allow_btn_check(index_selected);
+  }
+});
+// });
+// for (i = 0; i < btnService.length; i++) {
+//   console.log(i + " " + btnService[i].value);
+// }

@@ -1,5 +1,5 @@
 .layout-form {
-  max-width: 1300px;
+  max-width: 900px;
   border: 1px solid rgba(201, 168, 76, 0.2);
   padding: 28px;
   background: var(--dark2);
@@ -9,6 +9,45 @@
   gap: 1px;
   background: rgba(201, 168, 76, 0.15);
 }
+.layout-form-grid {
+  display: grid;
+  overflow: hidden;
+}
+.layout-form-grid > * {
+  transition: transform 0.5s ease-in-out;
+}
+
+.layout-form-grid > :nth-child(3) {
+  background: orange;
+  visibility: hidden;
+}
+.layout-form-grid > :nth-child(4) {
+  visibility: hidden;
+  background: blue;
+}
+.layout-form-grid > :nth-child(5) {
+  visibility: hidden;
+  background: red;
+}
+.LF-grid-item {
+  grid-area: 1 / 1 / 2 / 2;
+  height: auto;
+}
+.LF-grid-item.grid-desactive {
+  z-index: 1;
+  transform: translateX(100%);
+}
+.LF-grid-item.grid-active {
+  z-index: 2;
+  transform: translateX(0);
+}
+.LF-grid-item.grid-confirmed {
+  z-index: 3;
+  transform: translateX(-100%);
+}
+/* ________________________________________________________ */
+/* HEADER DO LAYOUT DO FORMULÁRIO */
+/* ________________________________________________________ */
 .LF-header {
   display: flex;
   justify-content: space-between;
@@ -57,7 +96,7 @@
 }
 
 .LF-header-item.selected div,
-.LF-header-item.selected-back div{
+.LF-header-item.selected-back div {
   opacity: 1;
   display: flex;
   color: var(--gold);
@@ -97,7 +136,9 @@
 .LF-header-item.selected-rev p {
   display: flex;
 }
-
+/* ________________________________________________________ */
+/*  LAYOUT DO FORMULÁRIO */
+/* ________________________________________________________ */
 .LF-item-box {
   background: var(--dark2);
   padding: 24px;
@@ -115,7 +156,9 @@
   font-size: 0.9rem;
   margin: 0 0 12px;
 }
-
+/* ________________________________________________________ */
+/*  LAYOUT DE OPÇÕES DE SERVIÇOS */
+/* ________________________________________________________ */
 .layout-service-options {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -164,11 +207,92 @@
 .LSO-item-info span {
   color: rgba(201, 168, 76, 0.7);
 }
+/* ________________________________________________________ */
+/*  LAYOUT DE OPÇÕES DE BARBEIROS */
+/* ________________________________________________________ */
+.layout-barber-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 16px;
+  margin: 24px 0 0;
+}
+.LBO-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  aspect-ratio: 2 / 1;
+  background: var(--dark3);
+  border: 1px solid rgba(201, 168, 76, 0.1);
+  padding: 16px 24px;
+  transition: border 0.2s ease-in-out;
+  position: relative;
+}
+.LBO-item:hover {
+  border: 1px solid rgba(201, 168, 76, 0.4);
+}
+.barber-selected {
+  border: 1px solid var(--gold);
+  background: rgba(201, 168, 76, 0.05);
+}
 
+.LBO-title {
+  font-weight: 500;
+  font-size: 0.75rem;
+  margin: 12px 0 0;
+  letter-spacing: 2px;
+  color: var(--light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.LBO-title span {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  margin: 4px 0 0;
+  text-transform: uppercase;
+  color: rgba(201, 168, 76, 0.7);
+}
+.LBO-icon-img {
+  width: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+.LBO-icon {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100px;
+  font-size: 250%;
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+  background: var(--dark2);
+
+}
+.LBO-icon::after {
+  opacity: 0;
+  content: "";
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  position: absolute;
+  transition: opacity 0.2s ease-in-out;
+}
+.barber-selected .LBO-icon::after {
+  opacity: 1;
+}
+/* ________________________________________________________ */
+/*  LAYOUT FOOTER */
+/* ________________________________________________________ */
 .LF-footer {
   display: flex;
   justify-content: space-between;
   padding: 8px 24px;
+  margin: 24px 0 0;
 }
 .LF-btns {
   padding: 16px 40px;
@@ -200,7 +324,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .LF-header-item {
+  .LF-header-item div {
     padding: 8px;
   }
   .LF-header-item p {
@@ -211,5 +335,11 @@
   }
   .layout-service-options {
     grid-template-columns: 1fr;
+  }
+  .LF-footer {
+    padding: 4px;
+  }
+  .LF-btns {
+    padding: 12px;
   }
 }
