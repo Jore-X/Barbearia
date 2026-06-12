@@ -1,3 +1,8 @@
+// ______________________________________________
+// ______________________________________________
+// ELEMENTOS
+// ______________________________________________
+// ______________________________________________
 const btnService = document.querySelectorAll(".LSO-item");
 const btnBarber = document.querySelectorAll(".LBO-item");
 const formHeader = document.querySelectorAll(".LF-header-item");
@@ -12,12 +17,21 @@ const grid3 = document.querySelector(".layout-form-grid > :nth-child(3)");
 const grid4 = document.querySelector(".layout-form-grid > :nth-child(4)");
 const grid5 = document.querySelector(".layout-form-grid > :nth-child(5)");
 console.log(grids_all);
-
+// ______________________________________________
+// ______________________________________________
+// VARIAVEIS
+// ______________________________________________
+// ______________________________________________
 let service_selected = "";
 let barber_selected = "";
 let allow_btn = 0;
 console.log(allow_btn);
 
+// ______________________________________________
+// ______________________________________________
+// FUNÇÕES
+// ______________________________________________
+// ______________________________________________
 const showBack_btn = (index_selected) => {
   if (index_selected > 0) {
     backBtn.style.visibility = "visible";
@@ -35,7 +49,11 @@ const checked_head = (index_selected) => {
 const allow_btn_check = (index_selected) => {
   if (allow_btn >= index_selected && service_selected != "" && allow_btn < 1) {
     nextBtn.classList.add("allowed");
-  } else if (allow_btn >= index_selected && barber_selected != "" && allow_btn < 2) {
+  } else if (
+    allow_btn >= index_selected &&
+    barber_selected != "" &&
+    allow_btn < 2
+  ) {
     nextBtn.classList.add("allowed");
   }
 };
@@ -139,3 +157,69 @@ backBtn.addEventListener("click", () => {
 // for (i = 0; i < btnService.length; i++) {
 //   console.log(i + " " + btnService[i].value);
 // }
+
+// ______________________________________________
+// ______________________________________________
+//  CALENDAR LÓGIC
+// ______________________________________________
+// ______________________________________________
+const calendar_month = document.querySelector(".box-days-calendar");
+
+const fragment_days = document.createDocumentFragment();
+
+for (i = 1; i <= 31; i++) {
+  const new_day = document.createElement("span");
+  const day_number = document.createElement("p");
+
+  new_day.classList.add("days-calendar");
+
+  day_number.textContent = `${i}`;
+
+  new_day.appendChild(day_number);
+
+  console.log(new_day);
+  fragment_days.appendChild(new_day);
+}
+
+calendar_month.appendChild(fragment_days);
+
+const horarios = [
+  "09:00",
+  "09:30",
+  "10:00",
+  "10:30",
+  "11:00",
+  "11:30",
+  "13:00",
+  "13:30",
+  "14:00",
+  "14:30",
+  "15:00",
+  "15:30",
+  "16:00",
+  "16:30",
+  "17:00",
+  "17:30",
+  "18:00",
+  "18:30",
+  "19:00",
+  "19:30",
+];
+
+const calendar_hours = document.querySelector(".box-hours-calendar");
+const fragment_hours = document.createDocumentFragment();
+console.log(horarios.length);
+console.log(horarios);
+for (i = 0; i < horarios.length; i++) {
+  const new_hour = document.createElement("span");
+  const hour_number = document.createElement("p");
+
+  new_hour.classList.add("calendar-hour");
+  hour_number.textContent = `${horarios[i]}`;
+
+  new_hour.appendChild(hour_number);
+
+  fragment_hours.appendChild(new_hour);
+}
+
+calendar_hours.appendChild(fragment_hours);
