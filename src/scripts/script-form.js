@@ -11,11 +11,6 @@ const backBtn = document.querySelector(".btn-back");
 console.log(btnService);
 console.log(formHeader);
 const grids_all = document.querySelectorAll(".layout-form-grid > *");
-const grid1 = document.querySelector(".layout-form-grid > :nth-child(1)");
-const grid2 = document.querySelector(".layout-form-grid > :nth-child(2)");
-const grid3 = document.querySelector(".layout-form-grid > :nth-child(3)");
-const grid4 = document.querySelector(".layout-form-grid > :nth-child(4)");
-const grid5 = document.querySelector(".layout-form-grid > :nth-child(5)");
 console.log(grids_all);
 // ______________________________________________
 // ______________________________________________
@@ -24,6 +19,8 @@ console.log(grids_all);
 // ______________________________________________
 let service_selected = "";
 let barber_selected = "";
+let day_selected = undefined;
+let hour_selected = undefined;
 let allow_btn = 0;
 console.log(allow_btn);
 
@@ -55,6 +52,13 @@ const allow_btn_check = (index_selected) => {
     allow_btn < 2
   ) {
     nextBtn.classList.add("allowed");
+  } else if (
+    allow_btn >= index_selected &&
+    day_selected != undefined &&
+    hour_selected != undefined &&
+    allow_btn < 3
+  ) {
+    nextBtn.classList.add("allowed");
   }
 };
 
@@ -68,22 +72,11 @@ const toggle_grid = (index_selected) => {
     grids_all[n].classList.remove("grid-active", "grid-confirmed");
   }
 
-  if (index_selected == 0) {
-    grids_all[n].classList.remove("grid-desactive", "grid-confirmed");
-    grid1.classList.add("grid-active");
-  } else if (index_selected == 1) {
-    grids_all[n].classList.remove("grid-desactive", "grid-confirmed");
-    grid2.classList.add("grid-active");
-  } else if (index_selected == 2) {
-    grids_all[n].classList.remove("grid-desactive", "grid-confirmed");
-    grid3.classList.add("grid-active");
-  } else if (index_selected == 3) {
-    grids_all[n].classList.remove("grid-desactive", "grid-confirmed");
-    grid4.classList.add("grid-active");
-  } else if (index_selected == 4) {
-    grids_all[n].classList.remove("grid-desactive", "grid-confirmed");
-    grid5.classList.add("grid-active");
-  }
+  grids_all[index_selected].classList.remove(
+    "grid-desactive",
+    "grid-confirmed",
+  );
+  grids_all[index_selected].classList.add("grid-active");
 };
 
 btnService.forEach((botoes, index) => {
@@ -172,16 +165,32 @@ for (i = 1; i <= 31; i++) {
   const day_number = document.createElement("p");
 
   new_day.classList.add("days-calendar");
+  new_day.dataset.date = i;
 
   day_number.textContent = `${i}`;
 
   new_day.appendChild(day_number);
 
-  console.log(new_day);
   fragment_days.appendChild(new_day);
 }
 
 calendar_month.appendChild(fragment_days);
+
+const days_calendar = document.querySelectorAll(".days-calendar");
+days_calendar.forEach((day_btn, index) => {
+  day_btn.addEventListener("click", () => {
+    for (i = 0; i < days_calendar.length; i++) {
+      days_calendar[i].classList.remove("day-selected");
+    }
+    days_calendar[index].classList.add("day-selected");
+    day_selected = days_calendar[index].dataset.date;
+    console.log("dia selecionado = " + day_selected);
+    calendar_hour_box.classList.add("show");
+
+    allow_btn_check(index_selected);
+  });
+});
+console.log("days_calendar = " + days_calendar.length);
 
 const horarios = [
   "09:00",
@@ -206,15 +215,16 @@ const horarios = [
   "19:30",
 ];
 
-const calendar_hours = document.querySelector(".box-hours-calendar");
+const calendar_hour_box = document.querySelector(".box-hours-calendar");
 const fragment_hours = document.createDocumentFragment();
-console.log(horarios.length);
 console.log(horarios);
 for (i = 0; i < horarios.length; i++) {
   const new_hour = document.createElement("span");
   const hour_number = document.createElement("p");
 
   new_hour.classList.add("calendar-hour");
+  new_hour.dataset.hora = horarios[i];
+
   hour_number.textContent = `${horarios[i]}`;
 
   new_hour.appendChild(hour_number);
@@ -222,4 +232,19 @@ for (i = 0; i < horarios.length; i++) {
   fragment_hours.appendChild(new_hour);
 }
 
-calendar_hours.appendChild(fragment_hours);
+calendar_hour_box.appendChild(fragment_hours);
+
+const calendar_hours = document.querySelectorAll(".calendar-hour");
+calendar_hours.forEach((hours, index) => {
+  hours.addEventListener("click", () => {
+    for (i = 0; i < calendar_hours.length; i++) {
+      calendar_hours[i].classList.remove("hour-selected");
+    }
+    calendar_hours[index].classList.add("hour-selected");
+
+    hour_selected = calendar_hours[index].dataset.hora;
+    console.log("Hora Selecionada = " + hour_selected);
+
+    allow_btn_check(index_selected);
+  });
+});

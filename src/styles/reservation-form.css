@@ -1,5 +1,6 @@
 .layout-form {
   max-width: 900px;
+  height: auto;
   border: 1px solid rgba(201, 168, 76, 0.2);
   padding: 28px;
   background: var(--dark2);
@@ -10,11 +11,13 @@
   background: rgba(201, 168, 76, 0.15);
 }
 .layout-form-grid {
+  background: var(--dark2);
   display: grid;
   overflow: hidden;
 }
 .layout-form-grid > * {
   transition: transform 0.5s ease-in-out;
+  /* display 0.5s ease-in-out; */
 }
 
 .layout-form-grid > :nth-child(4) {
@@ -31,15 +34,17 @@
 }
 .LF-grid-item.grid-desactive {
   z-index: 1;
-  transform: translateX(100%);
+  transform: translateY(100%);
+  display: none;
 }
 .LF-grid-item.grid-active {
   z-index: 2;
-  transform: translateX(0);
+  transform: translateY(0);
+  animation: appearUp 0.4s ease-in-out forwards;
 }
 .LF-grid-item.grid-confirmed {
   z-index: 3;
-  transform: translateX(-100%);
+  transform: translateY(100%);
 }
 /* ________________________________________________________ */
 /* HEADER DO LAYOUT DO FORMULÁRIO */
@@ -291,6 +296,7 @@
 }
 .layout-date-selector > * {
   width: 100%;
+  user-select: none;
 }
 .calendar-box {
   /* border: 1px solid blue; */
@@ -321,10 +327,31 @@
   grid-template-columns: repeat(7, 1fr);
   place-items: center;
 }
+.box-days-calendar > :nth-child(7n + 1) {
+  color: var(--gray);
+  cursor: not-allowed;
+}
+.box-days-calendar > :nth-child(7n + 1) p {
+  pointer-events: none;
+}
 .days-calendar {
   width: 100%;
   aspect-ratio: 1 / 1;
+  transition: all 0.4s ease-in-out;
 }
+.days-calendar.day-selected,
+.calendar-hour.hour-selected  {
+  background: var(--gold);
+  color: var(--black);
+  font-weight: 600;
+  border: 1px solid var(--gold);
+}
+.days-calendar.day-selected p:hover,
+.calendar-hour.hour-selected p:hover {
+  color: var(--cream);
+  background: var(--gold-dark);
+}
+
 .days-calendar p {
   border: 1px solid transparent;
   width: 100%;
@@ -333,10 +360,11 @@
   align-items: center;
   justify-content: center;
   font-size: 0.8rem;
-  transition: border 0.4s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 .days-calendar p:hover {
   border: 1px solid var(--gold);
+  color: var(--gold);
 }
 .last-month-days {
   color: var(--gray);
@@ -347,21 +375,27 @@
 }
 
 .box-hours-calendar {
-  display: grid;
+  display: none;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 8px;
   padding: 12px;
   margin: 24px 0 0;
+}
+.box-hours-calendar.show {
+  display: grid;
 }
 
 .calendar-hour {
   border: 1px solid rgba(201, 168, 76, 0.1);
   background: var(--dark3);
   text-align: center;
-  padding: 8px;
+  font-weight: 400;
+}
+.calendar-hour:hover {
+  border: 1px solid rgba(201, 168, 76, 0.5);
 }
 .calendar-hour > p {
-  font-weight: 400;
+  padding: 8px;
   font-size: 0.85rem;
   font-family: "Montserrat", sans-serif;
 }
@@ -421,5 +455,18 @@
   }
   .LF-btns {
     padding: 12px;
+  }
+}
+
+@keyframes appearUp {
+  0% {
+    opacity: 0;
+    display: block;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    display: block;
+    transform: translateY(0);
   }
 }
