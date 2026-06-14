@@ -156,6 +156,33 @@ backBtn.addEventListener("click", () => {
 //  CALENDAR LÓGIC
 // ______________________________________________
 // ______________________________________________
+
+// ______________________________________________
+const back_month_btn = document.querySelector(".back-month-btn");
+const next_month_btn = document.querySelector(".next-month-btn");
+const months = document.querySelectorAll(".months");
+let months_index = 0;
+// ______________________________________________
+back_month_btn.addEventListener("click", () => {
+  for (i = 0; i < months.length; i++) {
+    months[i].classList.remove("month-selected");
+  }
+  if (months_index > 0) {
+    months_index--;
+  }
+  months[months_index].classList.add("month-selected");
+});
+// ______________________________________________
+next_month_btn.addEventListener("click", () => {
+  for (i = 0; i < months.length; i++) {
+    months[i].classList.remove("month-selected");
+  }
+  if (months_index < months.length - 1) {
+    months_index++;
+  }
+  months[months_index].classList.add("month-selected");
+});
+// ______________________________________________
 const calendar_month = document.querySelector(".box-days-calendar");
 
 const fragment_days = document.createDocumentFragment();
@@ -175,7 +202,7 @@ for (i = 1; i <= 31; i++) {
 }
 
 calendar_month.appendChild(fragment_days);
-
+// ______________________________________________
 const days_calendar = document.querySelectorAll(".days-calendar");
 days_calendar.forEach((day_btn, index) => {
   day_btn.addEventListener("click", () => {
@@ -186,33 +213,33 @@ days_calendar.forEach((day_btn, index) => {
     day_selected = days_calendar[index].dataset.date;
     console.log("dia selecionado = " + day_selected);
     calendar_hour_box.classList.add("show");
-
     allow_btn_check(index_selected);
   });
+  console.log(Number(day_btn.dataset.date));
 });
 console.log("days_calendar = " + days_calendar.length);
-
+// ______________________________________________
 const horarios = [
-  "09:00",
-  "09:30",
-  "10:00",
-  "10:30",
-  "11:00",
-  "11:30",
-  "13:00",
-  "13:30",
-  "14:00",
-  "14:30",
-  "15:00",
-  "15:30",
-  "16:00",
-  "16:30",
-  "17:00",
-  "17:30",
-  "18:00",
-  "18:30",
-  "19:00",
-  "19:30",
+  { horario: "09:00", minutos: 540 },
+  { horario: "09:30", minutos: 570 },
+  { horario: "10:00", minutos: 600 },
+  { horario: "10:30", minutos: 630 },
+  { horario: "11:00", minutos: 660 },
+  { horario: "11:30", minutos: 690 },
+  { horario: "13:00", minutos: 780 },
+  { horario: "13:30", minutos: 810 },
+  { horario: "14:00", minutos: 840 },
+  { horario: "14:30", minutos: 870 },
+  { horario: "15:00", minutos: 900 },
+  { horario: "15:30", minutos: 930 },
+  { horario: "16:00", minutos: 960 },
+  { horario: "16:30", minutos: 990 },
+  { horario: "17:00", minutos: 1020 },
+  { horario: "17:30", minutos: 1050 },
+  { horario: "18:00", minutos: 1080 },
+  { horario: "18:30", minutos: 1110 },
+  { horario: "19:00", minutos: 1140 },
+  { horario: "19:30", minutos: 1170 },
 ];
 
 const calendar_hour_box = document.querySelector(".box-hours-calendar");
@@ -223,17 +250,17 @@ for (i = 0; i < horarios.length; i++) {
   const hour_number = document.createElement("p");
 
   new_hour.classList.add("calendar-hour");
-  new_hour.dataset.hora = horarios[i];
+  new_hour.dataset.horaNumero = horarios[i].minutos;
 
-  hour_number.textContent = `${horarios[i]}`;
+  hour_number.textContent = `${horarios[i].horario}`;
 
   new_hour.appendChild(hour_number);
-
+  console.log(new_hour);
   fragment_hours.appendChild(new_hour);
 }
 
 calendar_hour_box.appendChild(fragment_hours);
-
+// ______________________________________________
 const calendar_hours = document.querySelectorAll(".calendar-hour");
 calendar_hours.forEach((hours, index) => {
   hours.addEventListener("click", () => {
@@ -242,9 +269,10 @@ calendar_hours.forEach((hours, index) => {
     }
     calendar_hours[index].classList.add("hour-selected");
 
-    hour_selected = calendar_hours[index].dataset.hora;
+    hour_selected = calendar_hours[index].dataset.horaNumero;
     console.log("Hora Selecionada = " + hour_selected);
 
     allow_btn_check(index_selected);
   });
 });
+// ______________________________________________

@@ -45,6 +45,7 @@
 .LF-grid-item.grid-confirmed {
   z-index: 3;
   transform: translateY(100%);
+  display: none;
 }
 /* ________________________________________________________ */
 /* HEADER DO LAYOUT DO FORMULÁRIO */
@@ -302,6 +303,52 @@
   /* border: 1px solid blue; */
   max-width: 700px;
 }
+.calendar-month {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  padding: 12px 0;
+}
+.calendar-month > * {
+  width: 100%;
+}
+.month-options-box {
+  display: grid;
+  grid-area: 1 / 1 / 2 / 2;
+}
+.month-options-box > * {
+  display: flex;
+  grid-area: 1 / 1 / 2 / 2;
+  opacity: 0;
+}
+.month-options-box > * p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  font-weight: 550;
+  letter-spacing: 3px;
+  font-family: "Monserrat", sans-serif;
+  color: var(--gold);
+}
+.month-options-box > *.month-selected {
+  opacity: 1;
+}
+
+.month-btns i {
+  font-size: 1.5rem;
+  width: 100%;
+}
+.back-month-btn {
+  color: var(--gold-dark);
+}
+.next-month-btn {
+  color: var(--gold);
+}
+
 .calendar-head {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -334,13 +381,14 @@
 .box-days-calendar > :nth-child(7n + 1) p {
   pointer-events: none;
 }
-.days-calendar {
+.box-days-calendar > * {
   width: 100%;
   aspect-ratio: 1 / 1;
   transition: all 0.4s ease-in-out;
 }
+
 .days-calendar.day-selected,
-.calendar-hour.hour-selected  {
+.calendar-hour.hour-selected {
   background: var(--gold);
   color: var(--black);
   font-weight: 600;
@@ -351,8 +399,7 @@
   color: var(--cream);
   background: var(--gold-dark);
 }
-
-.days-calendar p {
+.box-days-calendar > * > p {
   border: 1px solid transparent;
   width: 100%;
   aspect-ratio: 1 / 1;
@@ -362,7 +409,7 @@
   font-size: 0.8rem;
   transition: all 0.3s ease-in-out;
 }
-.days-calendar p:hover {
+.box-days-calendar > * > p:hover {
   border: 1px solid var(--gold);
   color: var(--gold);
 }
