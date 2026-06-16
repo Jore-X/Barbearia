@@ -12,6 +12,7 @@ console.log(btnService);
 console.log(formHeader);
 const grids_all = document.querySelectorAll(".layout-form-grid > *");
 console.log(grids_all);
+const calendar_month = document.querySelector(".box-days-calendar");
 // ______________________________________________
 // ______________________________________________
 // VARIAVEIS
@@ -78,6 +79,34 @@ const toggle_grid = (index_selected) => {
   );
   grids_all[index_selected].classList.add("grid-active");
 };
+const calendar_render = (currentYear, months_index) => {
+  let month_selected_days = new Date(
+    currentYear,
+    months_index + 1,
+    0,
+  ).getDate();
+
+  const fragment_days = document.createDocumentFragment();
+
+  for (i = 1; i <= month_selected_days; i++) {
+    const new_month = document.createElement("div");
+    const new_day = document.createElement("span");
+    const day_number = document.createElement("p");
+
+    new_month.classList.add("calendar-month");
+
+    new_day.classList.add("days-calendar");
+    new_day.dataset.date = i;
+
+    day_number.textContent = `${i}`;
+
+    new_day.appendChild(day_number);
+
+    fragment_days.appendChild(new_day);
+  }
+  calendar_month.appendChild(fragment_days);
+  console.log(calendar_month);
+};
 
 btnService.forEach((botoes, index) => {
   botoes.addEventListener("click", () => {
@@ -103,7 +132,7 @@ btnBarber.forEach((botoes, index) => {
   });
 });
 // formHeader.forEach((head_btns, index) => {
-let index_selected = 0;
+let index_selected = 2;
 toggle_grid(index_selected);
 formHeader[index_selected].classList.add("selected");
 showBack_btn(index_selected);
@@ -156,13 +185,34 @@ backBtn.addEventListener("click", () => {
 //  CALENDAR LÓGIC
 // ______________________________________________
 // ______________________________________________
-
+const currentDate = new Date();
+console.log(currentDate);
+const currentYear = currentDate.getFullYear();
+const currentMonth = currentDate.getMonth();
+const currentDay = currentDate.getDate();
+const currentHour = currentDate.getHours();
+const currentMinutes = currentDate.getMinutes();
+console.log(new Date(currentYear, currentMonth + 1, 0).getDate());
+console.log(
+  "Ano = " +
+    currentYear +
+    "; Mes = " +
+    (currentMonth + 1) +
+    "; Dia = " +
+    currentDay +
+    "; Hora = " +
+    currentHour +
+    "; Minutos = " +
+    currentMinutes,
+);
 // ______________________________________________
 const back_month_btn = document.querySelector(".back-month-btn");
 const next_month_btn = document.querySelector(".next-month-btn");
 const months = document.querySelectorAll(".months");
-let months_index = 0;
+let months_index = currentMonth;
+months[months_index].classList.add("month-selected");
 // ______________________________________________
+calendar_render(currentYear, months_index);
 back_month_btn.addEventListener("click", () => {
   for (i = 0; i < months.length; i++) {
     months[i].classList.remove("month-selected");
@@ -171,6 +221,7 @@ back_month_btn.addEventListener("click", () => {
     months_index--;
   }
   months[months_index].classList.add("month-selected");
+  // calendar_render(currentYear, months_index);
 });
 // ______________________________________________
 next_month_btn.addEventListener("click", () => {
@@ -181,29 +232,14 @@ next_month_btn.addEventListener("click", () => {
     months_index++;
   }
   months[months_index].classList.add("month-selected");
+  // calendar_render(currentYear, months_index);
 });
 // ______________________________________________
-const calendar_month = document.querySelector(".box-days-calendar");
-
-const fragment_days = document.createDocumentFragment();
-
-for (i = 1; i <= 31; i++) {
-  const new_day = document.createElement("span");
-  const day_number = document.createElement("p");
-
-  new_day.classList.add("days-calendar");
-  new_day.dataset.date = i;
-
-  day_number.textContent = `${i}`;
-
-  new_day.appendChild(day_number);
-
-  fragment_days.appendChild(new_day);
-}
-
-calendar_month.appendChild(fragment_days);
 // ______________________________________________
 const days_calendar = document.querySelectorAll(".days-calendar");
+for (i = 0; i < currentDay - 1; i++) {
+  days_calendar[i].classList.add("day-unavailable");
+}
 days_calendar.forEach((day_btn, index) => {
   day_btn.addEventListener("click", () => {
     for (i = 0; i < days_calendar.length; i++) {

@@ -303,13 +303,13 @@
   /* border: 1px solid blue; */
   max-width: 700px;
 }
-.calendar-month {
+.calendar-months-header {
   display: flex;
   justify-content: space-between;
   border: 1px solid rgba(201, 168, 76, 0.2);
   padding: 12px 0;
 }
-.calendar-month > * {
+.calendar-months-header > * {
   width: 100%;
 }
 .month-options-box {
@@ -413,11 +413,11 @@
   border: 1px solid var(--gold);
   color: var(--gold);
 }
-.last-month-days {
+.day-unavailable {
   color: var(--gray);
   cursor: not-allowed;
 }
-.last-month-days > p {
+.day-unavailable > p {
   pointer-events: none;
 }
 
