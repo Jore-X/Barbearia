@@ -748,52 +748,68 @@
                   </div>
                   <div class="LF-item-box LF-grid-item">
                     <div class="LF-ib-header">
-                      <div class="LF-titles">Qual Serviço você deseja?</div>
+                      <div class="LF-titles">Seus dados de contato</div>
                       <div class="LF-subtitles">
-                        Selecione um serviço para continuar.
+                        Usaremos para enviar a confirmação e lembretes.
                       </div>
                     </div>
-                    <div class="layout-service-options">
-                      <button class="LSO-item" value="classic">
-                        <div class="selected-icon">✓</div>
-                        <div class="LSO-title">✂️ Corte Clássico</div>
-                        <div class="LSO-item-info">
-                          45 min <span>R$ 60</span>
+                    <div class="layout-data-form">
+                      <form id="data-form" action="">
+                        <div class="LDF-form-fields">
+                          <label for="name">Nome *</label>
+                          <input
+                            placeholder="Seu Nome"
+                            type="text"
+                            name="name"
+                            id="name"
+                            required
+                          />
                         </div>
-                      </button>
-                      <button class="LSO-item" value="full_beard">
-                        <div class="selected-icon">✓</div>
-                        <div class="LSO-title">🪒 Barba Completa</div>
-                        <div class="LSO-item-info">
-                          40 min <span>R$ 55</span>
+                        <div class="LDF-form-fields">
+                          <label for="surname">Sobrenome *</label>
+                          <input
+                            placeholder="Seu Sobrenome"
+                            type="text"
+                            name="surname"
+                            id="surname"
+                            required
+                          />
                         </div>
-                      </button>
-                      <button class="LSO-item" value="cut_beard">
-                        <div class="selected-icon">✓</div>
-                        <div class="LSO-title">💎 Corte + Barba</div>
-                        <div class="LSO-item-info">
-                          80 min <span>R$ 100</span>
+                        <div class="LDF-form-fields">
+                          <label for="phone-number">WhatsApp *</label>
+                          <input
+                            pattern="\([0-9]{2}\)[0-9]{5}[0-9]{4}"
+                            placeholder="(11) 9 1234-5678"
+                            type="number"
+                            name="phone-number"
+                            id="phone-number"
+                            required
+                          />
                         </div>
-                      </button>
-                      <button class="LSO-item" value="american_fade">
-                        <div class="selected-icon">✓</div>
-                        <div class="LSO-title">🎨 Degradê Americano</div>
-                        <div class="LSO-item-info">
-                          50 min <span>R$ 70</span>
+                        <div class="LDF-form-fields">
+                          <label for="email">E-mail</label>
+                          <input
+                            placeholder="example@gmail.com"
+                            type="email"
+                            name="email"
+                            id="email"
+                          />
                         </div>
-                      </button>
-                      <button class="LSO-item" value="hair_tratament">
-                        <div class="selected-icon">✓</div>
-                        <div class="LSO-title">🌿 Tratamento Capilar</div>
-                        <div class="LSO-item-info">
-                          60 min <span>R$ 90</span>
+                        <div class="LDF-form-fields observations-grid">
+                          <label for="observations">
+                            Observações(Opcional)
+                          </label>
+                          <textarea
+                            placeholder="Ex: Prefiro navalha no acabamento, tenho pele sensível..."
+                            name="observations"
+                            id="observations"
+                          ></textarea>
                         </div>
-                      </button>
-                      <button class="LSO-item" value="premium_ritual">
-                        <div class="selected-icon">✓</div>
-                        <div class="LSO-title">👑 Ritual Premium</div>
-                        <div class="LSO-item-info">2h <span>R$ 180</span></div>
-                      </button>
+                        <!-- <div class="LF-grid-item-btns">
+                          <button class="btn-back LF-btns">← Voltar</button>
+                          <button type="submit" class="btn-next LF-btns">Próximo →</button>
+                        </div> -->
+                      </form>
                     </div>
                   </div>
                   <div class="LF-item-box LF-grid-item">
@@ -848,7 +864,7 @@
                   </div>
                 </div>
               </div>
-              <div class="LF-footer">
+              <div class="LF-grid-item-btns">
                 <button class="btn-back LF-btns">← Voltar</button>
                 <button class="btn-next LF-btns">Próximo →</button>
               </div>

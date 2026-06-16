@@ -20,14 +20,10 @@
   /* display 0.5s ease-in-out; */
 }
 
-.layout-form-grid > :nth-child(4) {
-  visibility: hidden;
-  background: blue;
-}
-.layout-form-grid > :nth-child(5) {
+/* .layout-form-grid > :nth-child(5) {
   visibility: hidden;
   background: red;
-}
+} */
 .LF-grid-item {
   grid-area: 1 / 1 / 2 / 2;
   height: auto;
@@ -446,10 +442,71 @@
   font-size: 0.85rem;
   font-family: "Montserrat", sans-serif;
 }
+
+/* ________________________________________________________ */
+/*  LAYOUT DE FOMULÁRIO DE DADOS */
+/* ________________________________________________________ */
+/* .layout-data-form form * {
+  border: 1px solid;
+} */
+.layout-data-form form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.LDF-form-fields {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.LDF-form-fields label {
+  color: var(--gray);
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  font-size: 0.65rem;
+  font-family: "Montserrat", sans-serif;
+}
+.LDF-form-fields input,
+.LDF-form-fields textarea {
+  padding: 12px;
+  background: var(--dark3);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  color: var(--light);
+}
+.LDF-form-fields input::placeholder,
+.LDF-form-fields textarea::placeholder {
+  color: var(--gray);
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+}
+LDF-form-fields input:invalid,
+.LDF-form-fields textarea:invalid {
+  border: 1px solid rgba(150, 20, 20, 0.5);
+}
+.LDF-form-fields input:focus,
+.LDF-form-fields textarea:focus {
+  outline: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.LDF-form-fields textarea {
+  resize: none;
+  height: 80px;
+  overflow-y: auto;
+}
+.observations-grid,
+.layout-data-form form > .LF-grid-item-btns {
+  grid-column: span 2;
+}
 /* ________________________________________________________ */
 /*  LAYOUT FOOTER */
 /* ________________________________________________________ */
-.LF-footer {
+.LF-grid-item-btns {
   display: flex;
   justify-content: space-between;
   padding: 8px 24px;
@@ -497,7 +554,7 @@
   .layout-service-options {
     grid-template-columns: 1fr;
   }
-  .LF-footer {
+  .LF-grid-item-btns {
     padding: 4px;
   }
   .LF-btns {
