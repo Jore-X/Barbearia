@@ -13,6 +13,7 @@ console.log(formHeader);
 const grids_all = document.querySelectorAll(".layout-form-grid > *");
 console.log(grids_all);
 const calendar_month = document.querySelector(".box-days-calendar");
+const form = document.getElementById("data-form");
 // ______________________________________________
 // ______________________________________________
 // VARIAVEIS
@@ -23,6 +24,7 @@ let barber_selected = "";
 let day_selected = undefined;
 let hour_selected = undefined;
 let allow_btn = 0;
+let form_allow_btn = false;
 console.log(allow_btn);
 
 // ______________________________________________
@@ -58,6 +60,14 @@ const allow_btn_check = (index_selected) => {
     day_selected != undefined &&
     hour_selected != undefined &&
     allow_btn < 3
+  ) {
+    nextBtn.classList.add("allowed");
+  } else if (
+    allow_btn >= index_selected &&
+    day_selected != undefined &&
+    hour_selected != undefined &&
+    allow_btn < 4 &&
+    form_allow_btn
   ) {
     nextBtn.classList.add("allowed");
   }
@@ -108,6 +118,22 @@ const calendar_render = (currentYear, months_index) => {
   console.log(calendar_month);
 };
 
+const Cliente = {
+  name: "",
+  surname: "",
+  observation: "",
+  contato: {
+    phone_number: null,
+    email: "",
+  },
+  selections: {
+    service: "",
+    barber: "",
+    date_select: null,
+    hour_select: "",
+  },
+};
+
 btnService.forEach((botoes, index) => {
   botoes.addEventListener("click", () => {
     for (i = 0; i < btnService.length; i++) {
@@ -115,8 +141,9 @@ btnService.forEach((botoes, index) => {
     }
     botoes.classList.add("service-selected");
     service_selected = btnService[index].value;
+    Cliente.selections.service = service_selected;
     console.log(service_selected + ": selecionado!");
-    allow_btn_check(index_selected);
+    allow_btn_check(index_selected, form_allow_btn);
   });
 });
 btnBarber.forEach((botoes, index) => {
@@ -126,13 +153,14 @@ btnBarber.forEach((botoes, index) => {
     }
     botoes.classList.add("barber-selected");
     barber_selected = btnBarber[index].value;
+    Cliente.selections.barber = barber_selected;
     // allow_btn = 1;
     console.log(barber_selected + ": selecionado!");
-    allow_btn_check(index_selected);
+    allow_btn_check(index_selected, form_allow_btn);
   });
 });
 // formHeader.forEach((head_btns, index) => {
-let index_selected = 2;
+let index_selected = 0;
 toggle_grid(index_selected);
 formHeader[index_selected].classList.add("selected");
 showBack_btn(index_selected);
@@ -152,8 +180,9 @@ nextBtn.addEventListener("click", () => {
     toggle_grid(index_selected);
     checked_head(index_selected);
     showBack_btn(index_selected);
-    allow_btn_check(index_selected);
+    allow_btn_check(index_selected, form_allow_btn);
   }
+  console.log(Cliente);
 });
 backBtn.addEventListener("click", () => {
   if (index_selected > 0) {
@@ -172,7 +201,7 @@ backBtn.addEventListener("click", () => {
 
     checked_head(index_selected);
     showBack_btn(index_selected);
-    allow_btn_check(index_selected);
+    allow_btn_check(index_selected, form_allow_btn);
   }
 });
 // });
@@ -247,11 +276,13 @@ days_calendar.forEach((day_btn, index) => {
     }
     days_calendar[index].classList.add("day-selected");
     day_selected = days_calendar[index].dataset.date;
+    Cliente.selections.date_select = `${day_selected}/${currentMonth + 1}/${currentYear}`;
     console.log("dia selecionado = " + day_selected);
+    console.log(Cliente.date_select);
     calendar_hour_box.classList.add("show");
-    allow_btn_check(index_selected);
+    allow_btn_check(index_selected, form_allow_btn);
   });
-  console.log(Number(day_btn.dataset.date));
+  // console.log(Number(day_btn.dataset.date));
 });
 console.log("days_calendar = " + days_calendar.length);
 // ______________________________________________
@@ -286,12 +317,13 @@ for (i = 0; i < horarios.length; i++) {
   const hour_number = document.createElement("p");
 
   new_hour.classList.add("calendar-hour");
+  new_hour.dataset.horaText = horarios[i].horario;
   new_hour.dataset.horaNumero = horarios[i].minutos;
 
   hour_number.textContent = `${horarios[i].horario}`;
 
   new_hour.appendChild(hour_number);
-  console.log(new_hour);
+  // console.log(new_hour);
   fragment_hours.appendChild(new_hour);
 }
 
@@ -305,10 +337,63 @@ calendar_hours.forEach((hours, index) => {
     }
     calendar_hours[index].classList.add("hour-selected");
 
+    Cliente.selections.hour_select = calendar_hours[index].dataset.horaText;
     hour_selected = calendar_hours[index].dataset.horaNumero;
+    console.log("Hora Selecionada = " + Cliente.selections.hour_select);
     console.log("Hora Selecionada = " + hour_selected);
 
-    allow_btn_check(index_selected);
+    allow_btn_check(index_selected, form_allow_btn);
   });
 });
 // ______________________________________________
+
+// ______________________________________________
+// ______________________________________________
+//  FORM LÓGIC
+// ______________________________________________
+// ______________________________________________
+const data_inputs = document.querySelectorAll(
+  ".LDF-form-fields > input, .LDF-form-fields > textarea",
+);
+
+data_inputs.forEach((inputs, index) => {
+  inputs.addEventListener("blur", () => {
+    const field = event.target;
+    const field_name = field.name;
+    const field_value = field.value;
+    form_allow_btn = false;
+
+    if (field_value.trim() === "") return;
+    console.log(
+      `Salvando automaticamente o campo [${field_name}]: ${field_value}`,
+    );
+    switch (field_name) {
+      case "name":
+        Cliente.name = field_value;
+        break;
+      case "surname":
+        Cliente.surname = field_value;
+        break;
+      case "phone-number":
+        Cliente.contato.phone_number = field_value;
+        break;
+      case "email":
+        Cliente.contato.email = field_value;
+        break;
+      case "observations":
+        Cliente.observation = field_value;
+        break;
+    }
+    console.log(Cliente);
+    if (
+      Cliente.name != "" &&
+      Cliente.surname != "" &&
+      Cliente.contato.phone_number != null &&
+      Cliente.contato.email != ""
+    ) {
+      form_allow_btn = true;
+    }
+
+    allow_btn_check(index_selected, form_allow_btn);
+  });
+});
