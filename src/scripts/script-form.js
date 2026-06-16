@@ -388,8 +388,7 @@ data_inputs.forEach((inputs, index) => {
     if (
       Cliente.name != "" &&
       Cliente.surname != "" &&
-      Cliente.contato.phone_number != null &&
-      Cliente.contato.email != ""
+      Cliente.contato.phone_number != null
     ) {
       form_allow_btn = true;
     }

@@ -481,7 +481,7 @@
   font-size: 0.75rem;
   letter-spacing: 1px;
 }
-LDF-form-fields input:invalid,
+.LDF-form-fields input:invalid,
 .LDF-form-fields textarea:invalid {
   border: 1px solid rgba(150, 20, 20, 0.5);
 }
@@ -559,6 +559,13 @@ input::-webkit-inner-spin-button {
   }
   .LF-btns {
     padding: 12px;
+  }
+  .layout-data-form form {
+    grid-template-columns: 1fr;
+  }
+  .observations-grid,
+  .layout-data-form form > .LF-grid-item-btns {
+    grid-column: span 1;
   }
 }
 
