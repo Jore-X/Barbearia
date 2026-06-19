@@ -29,7 +29,27 @@ let barber_selected = "",
 let hour_selected = undefined;
 let allow_btn = 0;
 let form_allow_btn = false;
-console.log(allow_btn);
+console.log("allow_btn: " + allow_btn);
+
+const Cliente = {
+  name: "",
+  surname: "",
+  observation: "",
+  contato: {
+    phone_number: "",
+    email: "",
+  },
+  selections: {
+    service: {
+      name: "",
+      price: "70",
+      duration: "",
+    },
+    barber: "",
+    date_select: undefined,
+    hour_select: "",
+  },
+};
 
 // ______________________________________________
 // ______________________________________________
@@ -125,15 +145,39 @@ const toggle_grid = (index_selected) => {
   );
   grids_all[index_selected].classList.add("grid-active");
 };
-const calendar_render = (currentYear, months_index) => {
+const calendar_selection = (days_calendar, months_index) => {
+  days_calendar.forEach((day_btn, index) => {
+    day_btn.addEventListener("click", () => {
+      for (let i = 0; i < days_calendar.length; i++) {
+        days_calendar[i].classList.remove("day-selected");
+      }
+      days_calendar[index].classList.add("day-selected");
+      day_selected = days_calendar[index].dataset.date;
+      Cliente.selections.date_select = `${day_selected}/${months_index + 1}/${currentDate.year}`;
+      console.log("dia selecionado = " + day_selected);
+      console.log(Cliente.selections.date_select);
+      calendar_hour_box.classList.add("show");
+      allow_btn_check(index_selected, form_allow_btn);
+    });
+    // console.log(Number(day_btn.dataset.date));
+  });
+  console.log("days_calendar = " + days_calendar.length);
+};
+const calendar_render = (currentDate, months_index) => {
   let month_selected_days = new Date(
-    currentYear,
+    currentDate.year,
     months_index + 1,
     0,
   ).getDate();
+  let start_week_day = new Date(currentDate.year, months_index, 1).getDay();
 
   const fragment_days = document.createDocumentFragment();
 
+  for (let n = 0; n < start_week_day; n++) {
+    const new_day = document.createElement("span");
+
+    fragment_days.appendChild(new_day);
+  }
   for (let i = 1; i <= month_selected_days; i++) {
     const new_month = document.createElement("div");
     const new_day = document.createElement("span");
@@ -150,8 +194,31 @@ const calendar_render = (currentYear, months_index) => {
 
     fragment_days.appendChild(new_day);
   }
+  calendar_month.innerHTML = "";
   calendar_month.appendChild(fragment_days);
   console.log(calendar_month);
+
+  const days_calendar = document.querySelectorAll(".days-calendar");
+  calendar_selection(days_calendar, months_index);
+  days_unavailable(currentDate, days_calendar, months_index);
+};
+const days_unavailable = (currentDate, days_calendar, months_index) => {
+  const month_days_amount = new Date(
+    currentDate.year,
+    currentDate.month + 1,
+    0,
+  ).getDate();
+  console.log("Dias quantidade: " + month_days_amount);
+  console.log(days_calendar);
+  if (months_index < currentDate.month) {
+    for (let i = 0; i < days_calendar.length; i++) {
+      days_calendar[i].classList.add("day-unavailable");
+    }
+  } else if (months_index == currentDate.month) {
+    for (let i = 0; i < currentDate.day - 1; i++) {
+      days_calendar[i].classList.add("day-unavailable");
+    }
+  }
 };
 const phoneMask = (input) => {
   // Remove tudo que não for Número
@@ -219,26 +286,6 @@ resume_logic = (Cliente) => {
   console.log(grid_resume);
   const final_warning = document.querySelector(".LR-bottom-resume");
   final_warning.innerHTML = `📱 A confirmação será enviada ao WhatsApp <span>${Cliente.contato.phone_number}</span> e ao e-mail cadastrado.`;
-};
-
-const Cliente = {
-  name: "",
-  surname: "",
-  observation: "",
-  contato: {
-    phone_number: "",
-    email: "",
-  },
-  selections: {
-    service: {
-      name: "",
-      price: "70",
-      duration: "",
-    },
-    barber: "",
-    date_select: undefined,
-    hour_select: "",
-  },
 };
 
 btnService.forEach((botoes, index) => {
@@ -343,8 +390,12 @@ const currentDate = {
   hour: currentDateFull.getHours(),
   minutes: currentDateFull.getMinutes(),
 };
+console.log("Get Day: " + new Date(2026, 6, 1).getDay());
 console.log(currentDate);
-console.log(new Date(currentDate.year, currentDate.month + 1, 0).getDate());
+console.log(
+  "Quantidade de dias do mês: " +
+    new Date(currentDate.year, currentDate.month + 1, 0).getDate(),
+);
 // ______________________________________________
 const back_month_btn = document.querySelector(".back-month-btn");
 const next_month_btn = document.querySelector(".next-month-btn");
@@ -352,7 +403,7 @@ const months = document.querySelectorAll(".months");
 let months_index = currentDate.month;
 months[months_index].classList.add("month-selected");
 // ______________________________________________
-calendar_render(currentDate.year, months_index);
+calendar_render(currentDate, months_index);
 back_month_btn.addEventListener("click", () => {
   for (let i = 0; i < months.length; i++) {
     months[i].classList.remove("month-selected");
@@ -361,7 +412,7 @@ back_month_btn.addEventListener("click", () => {
     months_index--;
   }
   months[months_index].classList.add("month-selected");
-  // calendar_render(currentDate.year, months_index);
+  calendar_render(currentDate, months_index);
 });
 // ______________________________________________
 next_month_btn.addEventListener("click", () => {
@@ -372,30 +423,10 @@ next_month_btn.addEventListener("click", () => {
     months_index++;
   }
   months[months_index].classList.add("month-selected");
-  // calendar_render(currentDate.year, months_index);
+  calendar_render(currentDate, months_index);
 });
 // ______________________________________________
 // ______________________________________________
-const days_calendar = document.querySelectorAll(".days-calendar");
-for (let i = 0; i < currentDate.day - 1; i++) {
-  days_calendar[i].classList.add("day-unavailable");
-}
-days_calendar.forEach((day_btn, index) => {
-  day_btn.addEventListener("click", () => {
-    for (let i = 0; i < days_calendar.length; i++) {
-      days_calendar[i].classList.remove("day-selected");
-    }
-    days_calendar[index].classList.add("day-selected");
-    day_selected = days_calendar[index].dataset.date;
-    Cliente.selections.date_select = `${day_selected}/${currentDate.month + 1}/${currentDate.year}`;
-    console.log("dia selecionado = " + day_selected);
-    console.log(Cliente.date_select);
-    calendar_hour_box.classList.add("show");
-    allow_btn_check(index_selected, form_allow_btn);
-  });
-  // console.log(Number(day_btn.dataset.date));
-});
-console.log("days_calendar = " + days_calendar.length);
 // ______________________________________________
 const horarios = [
   { horario: "09:00", minutos: 540 },

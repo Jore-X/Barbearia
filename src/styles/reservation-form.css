@@ -357,7 +357,7 @@
   border: 1px solid rgba(201, 168, 76, 0.2);
 }
 .days-weak {
-  padding: 24px;
+  padding: 12px 8%;
   /* border: 1px solid red; */
   width: 100%;
   height: 100%;
@@ -369,6 +369,9 @@
   font-weight: 500;
   color: var(--gray);
 }
+.days-weak :nth-child(1) {
+  display: none;
+}
 .box-days-calendar {
   border: 1px solid rgba(201, 168, 76, 0.2);
   display: grid;
@@ -378,8 +381,6 @@
 .box-days-calendar > :nth-child(7n + 1) {
   color: var(--gray);
   cursor: not-allowed;
-}
-.box-days-calendar > :nth-child(7n + 1) p {
   pointer-events: none;
 }
 .box-days-calendar > * {
@@ -417,14 +418,12 @@
 .day-unavailable {
   color: var(--gray);
   cursor: not-allowed;
-}
-.day-unavailable > p {
   pointer-events: none;
 }
 
 .box-hours-calendar {
   display: none;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 8px;
   padding: 12px;
   margin: 24px 0 0;
@@ -619,7 +618,9 @@ input::-webkit-inner-spin-button {
   pointer-events: auto;
   opacity: 1;
 }
-
+.sucess-box {
+  display: none;
+}
 @media screen and (max-width: 768px) {
   .LF-header-item div {
     padding: 8px;
@@ -629,6 +630,18 @@ input::-webkit-inner-spin-button {
   }
   .LF-item-box {
     padding: 4px;
+  }
+  .days-weak :nth-child(1) {
+    display: block;
+  }
+  .days-weak :nth-child(2) {
+    display: none;
+  }
+  .box-days-calendar > * > p {
+    font-size: 0.65rem;
+  }
+  .box-hours-calendar {
+    grid-template-columns: 1fr 1fr;
   }
   .layout-service-options {
     grid-template-columns: 1fr;
