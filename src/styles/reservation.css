@@ -3,6 +3,9 @@
   max-width: 100%;
   padding: 40px 0;
 }
+.reservation-layout {
+  display: flex;
+}
 .reservation-header {
   margin: 0 0 30px;
 }
@@ -82,6 +85,21 @@
   color: var(--gray);
 }
 
+@media screen and (max-width: 1024px) {
+  .reservation-layout {
+    flex-direction: column;
+  }
+  .layout-text{
+    display: flex;
+    flex-direction: column;
+  }
+  .layout-text > :last-child{
+    align-self: center;
+  }
+   .LT-grid{
+    max-width: 100%;
+   }
+}
 @media screen and (max-width: 768px) {
   .LT-grid {
     max-width: 100%;
