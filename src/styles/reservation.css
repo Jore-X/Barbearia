@@ -1,0 +1,107 @@
+#reservation {
+  background: var(--dark);
+  max-width: 100%;
+  padding: 40px 0;
+}
+.reservation-layout {
+  display: flex;
+}
+.reservation-header {
+  margin: 0 0 30px;
+}
+
+.LT-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.3rem, 2vw, 2.2rem);
+  font-weight: 700;
+}
+
+.LT-subtitle {
+  max-width: 600px;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  color: rgba(245, 240, 232, 0.5);
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 1px;
+}
+.LT-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  background: rgba(201, 168, 76, 0.15);
+  max-width: 600px;
+}
+.LT-flexbox-card {
+  background: var(--dark);
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+}
+.LT-flexbox-icon {
+  background: rgba(139, 105, 20, 0.1);
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  padding: 0.5rem;
+  margin: 0 20px 0 0;
+}
+
+.LT-flexbox-title {
+  font-weight: 650;
+  font-size: 0.9rem;
+}
+
+.LT-flexbox-subtitle {
+  color: var(--gray);
+  font-size: 0.8rem;
+  margin: 4px 0 0;
+}
+
+.LT-box-hours {
+  margin: 40px 0 20px;
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 1rem;
+  background: var(--dark2);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+}
+
+.BH-title {
+  color: var(--gold);
+  font-weight: 350;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  text-align: center;
+}
+.BH-item {
+  text-align: start;
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+}
+.BH-item span {
+  color: var(--gray);
+}
+
+@media screen and (max-width: 1024px) {
+  .reservation-layout {
+    flex-direction: column;
+  }
+  .layout-text{
+    display: flex;
+    flex-direction: column;
+  }
+  .layout-text > :last-child{
+    align-self: center;
+  }
+   .LT-grid{
+    max-width: 100%;
+   }
+}
+@media screen and (max-width: 768px) {
+  .LT-grid {
+    max-width: 100%;
+  }
+}

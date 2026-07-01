@@ -19,6 +19,7 @@
 
 .footer-header .section-sub {
   margin: 24px 0 0;
+  font-size: 1rem;
 }
 
 .social-links {
@@ -28,7 +29,8 @@
 }
 .social-links a {
   text-decoration: none;
-  border: 2px solid var(--gold-dark);
+  border: 1px solid var(--gold-dark);
+  background: rgba(232, 201, 123, 0.05);
   color: var(--gold);
   border-radius: 25%;
   padding: 8px;
@@ -42,7 +44,7 @@
 .footer-location .location-item {
   text-decoration: none;
   color: var(--gray);
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 
 .footer-location .location-item span {
