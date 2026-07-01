@@ -5,12 +5,18 @@
 // ______________________________________________
 const btnService = document.querySelectorAll(".LSO-item");
 const btnBarber = document.querySelectorAll(".LBO-item");
-const formHeader = document.querySelectorAll(".LF-header-item");
+const formHeader = document.querySelector(".LF-header");
+const formHeaderItem = document.querySelectorAll(".LF-header-item");
+const gridBtn = document.querySelector(".LF-grid-item-btns");
 const nextBtn = document.querySelector(".btn-next");
 const backBtn = document.querySelector(".btn-back");
+const newReserveBtn = document.querySelector(".new-reserve-btn");
 console.log(btnService);
 console.log(formHeader);
-const grids_all = document.querySelectorAll(".layout-form-grid > *");
+console.log(formHeaderItem);
+const grids_all = document.querySelectorAll(
+  ".layout-form-grid > *, .sucess-box",
+);
 console.log(grids_all);
 const calendar_month = document.querySelector(".box-days-calendar");
 const form = document.getElementById("data-form");
@@ -19,13 +25,47 @@ const form = document.getElementById("data-form");
 // VARIAVEIS
 // ______________________________________________
 // ______________________________________________
+const zerar_variaveis = (days_calendar) => {
+  index_selected = 0;
+  service_selected = {
+    service: "",
+    price: "",
+    duration: "",
+  };
+  barber_selected = "";
+  day_selected = undefined;
+  hour_selected = undefined;
+  allow_btn = 0;
+  form_allow_btn = false;
+
+  // remover classes
+  for (let i = 0; i < formHeaderItem.length; i++) {
+    formHeaderItem[i].classList.remove("selected", "confirmed");
+    formHeaderItem[index_selected].classList.add("selected");
+  }
+  for (let i = 0; i < btnService.length; i++) {
+    btnService[i].classList.remove("service-selected");
+  }
+  for (let i = 0; i < btnBarber.length; i++) {
+    btnBarber[i].classList.remove("barber-selected");
+  }
+  for (let i = 0; i < days_calendar.length; i++) {
+    days_calendar[i].classList.remove("day-selected");
+  }
+  for (let i = 0; i < calendar_hours.length; i++) {
+    calendar_hours[i].classList.remove("hour-selected");
+  }
+  const formReset = document.getElementById("data-form").reset();
+
+  console.log("zeradas");
+};
 let service_selected = {
   service: "",
   price: "",
   duration: "",
 };
-let barber_selected = "",
-  day_selected = undefined;
+let barber_selected = "";
+let day_selected = undefined;
 let hour_selected = undefined;
 let allow_btn = 0;
 let form_allow_btn = false;
@@ -42,7 +82,7 @@ const Cliente = {
   selections: {
     service: {
       name: "",
-      price: "70",
+      price: "",
       duration: "",
     },
     barber: "",
@@ -66,11 +106,13 @@ const showBack_btn = (index_selected) => {
 
 const checked_head = (index_selected) => {
   for (let i = 0; i < index_selected; i++) {
-    formHeader[i].classList.add("confirmed");
+    formHeaderItem[i].classList.add("confirmed");
   }
 };
 
 const allow_btn_check = (index_selected) => {
+  formHeader.style.display = "flex";
+  gridBtn.style.display = "flex";
   const paragraphs_backBtn = document.querySelectorAll(".btn-back > p");
   const paragraphs_nextBtn = document.querySelectorAll(".btn-next > p");
   for (let i = 0; i < paragraphs_nextBtn.length; i++) {
@@ -86,6 +128,7 @@ const allow_btn_check = (index_selected) => {
     paragraphs_nextBtn[2].style.display = "inline-block";
     paragraphs_backBtn[1].style.display = "inline-block";
     resume_logic(Cliente);
+    sucess_logic(Cliente);
   } else if (index_selected != 3 && index_selected != 4) {
     paragraphs_nextBtn[0].style.display = "inline-block";
     paragraphs_backBtn[0].style.display = "inline-block";
@@ -126,10 +169,17 @@ const allow_btn_check = (index_selected) => {
     allow_btn === 4
   ) {
     nextBtn.classList.add("allowed");
+  } else if (index_selected === 5) {
+    grids_all[5].style.display = "flex";
+    nextBtn.classList.add("allowed");
+    formHeader.style.display = "none";
+    gridBtn.style.display = "none";
   }
 };
 
 const toggle_grid = (index_selected) => {
+  grids_all[5].style.display = "none";
+  grids_all[5].classList.remove("active");
   for (let i = 0; i < index_selected; i++) {
     grids_all[i].classList.remove("grid-active", "grid-desactive");
     grids_all[i].classList.add("grid-confirmed");
@@ -138,12 +188,16 @@ const toggle_grid = (index_selected) => {
     grids_all[i].classList.add("grid-desactive");
     grids_all[i].classList.remove("grid-active", "grid-confirmed");
   }
-
-  grids_all[index_selected].classList.remove(
-    "grid-desactive",
-    "grid-confirmed",
-  );
-  grids_all[index_selected].classList.add("grid-active");
+  if (index_selected != 5) {
+    grids_all[index_selected].classList.remove(
+      "grid-desactive",
+      "grid-confirmed",
+    );
+    grids_all[index_selected].classList.add("grid-active");
+  } else if (index_selected === 5) {
+    grids_all[5].classList.add("active");
+    grids_all[5].style.display = "flex";
+  }
 };
 const calendar_selection = (days_calendar, months_index) => {
   days_calendar.forEach((day_btn, index) => {
@@ -241,7 +295,7 @@ const phoneMask = (input) => {
   // atualiza o valor do input com a mascara
   input.value = valor;
 };
-resume_logic = (Cliente) => {
+const resume_logic = (Cliente) => {
   const services = {
     classic: "Corte Clássico",
     full_beard: "Barba Completa",
@@ -282,10 +336,45 @@ resume_logic = (Cliente) => {
 
     fragmentResume.appendChild(new_grid_item);
   }
+  grid_resume.innerHTML = "";
   grid_resume.appendChild(fragmentResume);
   console.log(grid_resume);
   const final_warning = document.querySelector(".LR-bottom-resume");
   final_warning.innerHTML = `📱 A confirmação será enviada ao WhatsApp <span>${Cliente.contato.phone_number}</span> e ao e-mail cadastrado.`;
+};
+const sucess_logic = (Cliente) => {
+  const services = {
+    classic: "Corte Clássico",
+    full_beard: "Barba Completa",
+    cut_beard: "Corte + Barba",
+    american_fade: "Degradê Americano",
+    hair_tratament: "Tratamento Capilar",
+    premium_ritual: "Ritual Premium",
+  };
+  const sucess_subtitle = document.querySelector(".SB-subtitle");
+  const sucess_p_1 = document.querySelectorAll(
+    ".mini-resume-item > :nth-child(1)",
+  );
+  const sucess_p_2 = document.querySelectorAll(
+    ".mini-resume-item > :nth-child(2)",
+  );
+  const itens_grid = [
+    { label: "Serviço", value: services[Cliente.selections.service.name] },
+    { label: "Barbeiro", value: Cliente.selections.barber },
+    {
+      label: "Data & Horário",
+      value:
+        Cliente.selections.date_select +
+        " às " +
+        Cliente.selections.hour_select,
+    },
+    { label: "Total", value: `R$ ${Cliente.selections.service.price}` },
+  ];
+  sucess_subtitle.textContent = `Seu horário foi reservado com sucesso, ${Cliente.name}! Até lá!`;
+  for (let i = 0; i < itens_grid.length; i++) {
+    sucess_p_1[i].textContent = `${itens_grid[i].label}`;
+    sucess_p_2[i].textContent = `${itens_grid[i].value}`;
+  }
 };
 
 btnService.forEach((botoes, index) => {
@@ -326,24 +415,30 @@ btnBarber.forEach((botoes, index) => {
     allow_btn_check(index_selected, form_allow_btn);
   });
 });
-// formHeader.forEach((head_btns, index) => {
+// formHeaderItem.forEach((head_btns, index) => {
 let index_selected = 0;
 toggle_grid(index_selected);
-formHeader[index_selected].classList.add("selected");
+allow_btn_check(index_selected);
+if (index_selected != 5) {
+  formHeaderItem[index_selected].classList.add("selected");
+}
 showBack_btn(index_selected);
 nextBtn.addEventListener("click", () => {
   nextBtn.classList.remove("allowed");
-  if (index_selected < formHeader.length - 1) {
-    for (let i = 0; i < formHeader.length; i++) {
-      formHeader[i].classList.add("anim-back");
-      formHeader[i].classList.remove("selected", "selected-back");
+  if (index_selected < formHeaderItem.length) {
+    for (let i = 0; i < formHeaderItem.length; i++) {
+      formHeaderItem[i].classList.add("anim-back");
+      formHeaderItem[i].classList.remove("selected", "selected-back");
     }
     index_selected++;
     allow_btn++;
     console.log(allow_btn);
+    console.log("index_selected: " + index_selected);
 
-    formHeader[index_selected].classList.add("selected");
-    formHeader[index_selected].classList.remove("anim-back", "anim-next");
+    if (index_selected != 5) {
+      formHeaderItem[index_selected].classList.add("selected");
+      formHeaderItem[index_selected].classList.remove("anim-back", "anim-next");
+    }
     toggle_grid(index_selected);
     checked_head(index_selected);
     showBack_btn(index_selected);
@@ -353,9 +448,13 @@ nextBtn.addEventListener("click", () => {
 });
 backBtn.addEventListener("click", () => {
   if (index_selected > 0) {
-    for (let i = 0; i < formHeader.length; i++) {
-      formHeader[i].classList.add("anim-next");
-      formHeader[i].classList.remove("selected", "selected-back", "confirmed");
+    for (let i = 0; i < formHeaderItem.length; i++) {
+      formHeaderItem[i].classList.add("anim-next");
+      formHeaderItem[i].classList.remove(
+        "selected",
+        "selected-back",
+        "confirmed",
+      );
     }
     index_selected--;
     allow_btn--;
@@ -363,8 +462,8 @@ backBtn.addEventListener("click", () => {
 
     toggle_grid(index_selected);
 
-    formHeader[index_selected].classList.add("selected-back");
-    formHeader[index_selected].classList.remove("anim-back", "anim-next");
+    formHeaderItem[index_selected].classList.add("selected-back");
+    formHeaderItem[index_selected].classList.remove("anim-back", "anim-next");
 
     checked_head(index_selected);
     showBack_btn(index_selected);
@@ -544,3 +643,15 @@ data_inputs.forEach((inputs, index) => {
 //  RESUME LÓGIC
 // ______________________________________________
 // ______________________________________________
+newReserveBtn.addEventListener("click", () => {
+  // só pode ser criada depois do callendar_render
+  const days_calendar = document.querySelectorAll(".days-calendar");
+  if (index_selected === 5) {
+    zerar_variaveis(days_calendar);
+    console.log("executou o zerar");
+    toggle_grid(index_selected);
+    checked_head(index_selected);
+    showBack_btn(index_selected);
+    allow_btn_check(index_selected, form_allow_btn);
+  }
+});
