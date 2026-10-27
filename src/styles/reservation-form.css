@@ -269,8 +269,8 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  width: 100px;
-  font-size: 250%;
+  width: 100%;
+  max-width: 100px;
   border-radius: 50%;
   aspect-ratio: 1 / 1;
   background: var(--dark2);
@@ -367,7 +367,7 @@
   text-transform: uppercase;
   text-align: center;
   font-weight: 500;
-  color: var(--gray);
+  color: var(--light);
 }
 .days-weak :nth-child(1) {
   display: none;
@@ -386,6 +386,7 @@
 .box-days-calendar > * {
   width: 100%;
   aspect-ratio: 1 / 1;
+  border: 1px solid rgba(250, 250, 250, 0.01);
   transition: all 0.4s ease-in-out;
 }
 
@@ -733,6 +734,7 @@ input::-webkit-inner-spin-button {
 @media screen and (max-width: 768px) {
   .layout-form {
     padding: 12px 8px;
+    margin: 0;
   }
   .LF-header-item div {
     padding: 8px;
@@ -750,7 +752,8 @@ input::-webkit-inner-spin-button {
     display: none;
   }
   .box-days-calendar > * > p {
-    font-size: 0.65rem;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
   }
   .box-hours-calendar {
     grid-template-columns: 1fr 1fr;

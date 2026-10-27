@@ -215,8 +215,11 @@ section,
     padding: 12px 18px;
   }
 }
-/* @media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
   section {
-    padding: clamp(30px, 10vw, 100px);
+    padding: 4%;
   }
-} */
+  .inner {
+    padding: 3%;
+  }
+}
